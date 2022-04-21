@@ -5,6 +5,7 @@ import { SignInComponent } from './admin/sign-in/sign-in.component';
 import { BackOfficeComponent } from './layouts/back-office/back-office.component';
 import { FrontOfficeComponent } from './layouts/front-office/front-office.component';
 import { HomeComponent } from './user/home/home.component';
+import { LoginComponent } from './user/login/login.component';
 import { ForumComponent } from './user/pages/forum/forum.component';
 
 const routes: Routes = [
@@ -25,8 +26,13 @@ const routes: Routes = [
         path: 'forum',
         component: ForumComponent
       },
+      
     ]
   },
+  {
+        path: 'login',
+        component: LoginComponent
+      },
   {
     path: 'admin',
     component: BackOfficeComponent,

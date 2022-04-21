@@ -14,6 +14,7 @@ import { DashboardComponent } from './admin/pages/dashboard/dashboard.component'
 import { SidebarComponent } from './admin/layouts/sidebar/sidebar.component';
 import { NavBarBComponent } from './admin/layouts/nav-bar-b/nav-bar-b.component';
 import { FooterBComponent } from './admin/layouts/footer-b/footer-b.component';
+import { LoginComponent } from './user/login/login.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { FooterBComponent } from './admin/layouts/footer-b/footer-b.component';
     DashboardComponent,
     SidebarComponent,
     NavBarBComponent,
-    FooterBComponent
+    FooterBComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
