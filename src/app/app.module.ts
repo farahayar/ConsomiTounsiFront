@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router'
 import { FormulaireProductComponent } from './pages/formulaire-product/formulaire-product.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ProductCategoryComponent } from './pages/product-category/product-category.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     NavBarBComponent,
     FooterBComponent,
     ProductsComponent,
-    FormulaireProductComponent
+    FormulaireProductComponent,
+    ProductCategoryComponent
   ],
   imports: [
     

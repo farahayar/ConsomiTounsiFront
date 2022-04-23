@@ -1,0 +1,126 @@
+<app-sidebar></app-sidebar>
+<app-nav-bar-b></app-nav-bar-b>
+<main class="main-wrap">
+
+    <section class="content-main">
+        <div class="content-header">
+            <div>
+                <h2 class="content-title card-title">Categories</h2>
+                <p>Add, edit or delete a category</p>
+            </div>
+            <div>
+                <input type="text" placeholder="Search Categories" class="form-control bg-white">
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <form>
+                            <div class="mb-4">
+                                <label for="product_name" class="form-label">Name</label>
+                                <input type="text" placeholder="Type here" class="form-control" [(ngModel)]="productCategory.name_CategoryProd"
+                                [ngModelOptions]="{standalone : true}">
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label class="form-label">Description</label>
+                                <textarea placeholder="Type here" class="form-control" [(ngModel)]="productCategory.desc_CategoryProd"
+                                [ngModelOptions]="{standalone : true}"></textarea>
+                            </div>
+                            <div class="d-grid">
+                                <button class="btn btn-primary" (click)="addPc(productCategory)">Create category</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <!-- <th class="text-center">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                            </div>
+                                        </th> -->
+                                        <!-- <th>ID</th> -->
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th class="text-end">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor='let pc of listPc'>
+                                        <!-- <td class="text-center">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                            </div>
+                                        </td> -->
+                                        <!-- <td>21</td> -->
+                                        <td>{{pc.name_CategoryProd}}</td>
+                                        <td>{{pc.desc_CategoryProd}}</td>
+                                        <td class="text-end">
+                                            <div class="dropdown">
+                                                <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
+                                                <div class="dropdown-menu">
+                                                    <!-- <a class="dropdown-item" href="#">View detail</a> -->
+                                                    
+                                                    <a class="dropdown-item" (click)="open(mymodal)">Edit info</a>
+                                                    <a class="dropdown-item text-danger" (click)="deletePc(pc.idCategoryProd)">Delete</a>
+                                                </div>
+                                            </div>
+                                            <!-- dropdown //end -->
+                                        </td>
+                                        <ng-template #mymodal let-modal>
+                                            <div class="modal-header">
+                                                <h4 class="modal-title" id="modal-basic-title">Edit</h4>
+                                                <button type="button" class="close" aria-label="Close"
+                                                    (click)="modal.dismiss('Cross click')">
+                                                    <span aria-hidden="true" (click)="cancel()">×</span>
+        
+                                                </button>
+        
+                                            </div>
+                                            <div>
+                                            <form>
+                                                <div class="modal-body">
+        
+                                                    <div class="row" class="col-md-5">
+                                                        <label>Name</label>
+                                                        <input type="text" [(ngModel)]="pc.name_CategoryProd" [ngModelOptions]="{standalone : true}" class="form-control" />
+                                                    </div>
+                                                    <div class="row" class="col-md-5">
+                                                        <label>Description</label>
+                                                        <input type="text" [(ngModel)]="pc.desc_CategoryProd" [ngModelOptions]="{standalone : true}" class="form-control" />
+                                                    </div>
+                                                   
+                                                </div>
+        
+                                                <div class="modal-footer">
+        
+                                                    <button type="button" class="btn btn-info"
+                                                        (click)="modal.close('Save click')" (click)="cancel()">Cancel</button>
+                                                    <button class="btn btn-success"(click)="editPc(productCategory)" (click)="modal.close('Save click')">Validate</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        </ng-template>
+                                    </tr>
+                                    
+                                    
+                                    
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- .col// -->
+                </div>
+                <!-- .row // -->
+            </div>
+            <!-- card body .// -->
+        </div>
+        <!-- card .// -->
+    </section>
+</main>
+<app-footer-b></app-footer-b>
