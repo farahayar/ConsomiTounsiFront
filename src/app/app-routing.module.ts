@@ -4,6 +4,7 @@ import { DashboardComponent } from './admin/pages/dashboard/dashboard.component'
 import { SignInComponent } from './admin/sign-in/sign-in.component';
 import { BackOfficeComponent } from './layouts/back-office/back-office.component';
 import { FrontOfficeComponent } from './layouts/front-office/front-office.component';
+import { ProductsComponent } from './pages/products/products.component';
 import { HomeComponent } from './user/home/home.component';
 import { ForumComponent } from './user/pages/forum/forum.component';
 
@@ -39,9 +40,16 @@ const routes: Routes = [
         path: 'dashboard',
         component: DashboardComponent
       },
+      {
+        path: 'produit',
+        component: ProductsComponent
+      },
+      
       
     ]
+    
   }
+  
 ];
 
 @NgModule({

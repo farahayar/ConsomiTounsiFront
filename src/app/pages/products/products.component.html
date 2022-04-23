@@ -1,0 +1,209 @@
+<app-sidebar></app-sidebar>
+<app-nav-bar-b></app-nav-bar-b>
+<main class="main-wrap">
+    <section class="content-main">
+        <div class="content-header">
+            <div>
+                <h2 class="content-title card-title">Products List</h2>
+                <p>Lorem ipsum dolor sit amet.</p>
+            </div>
+            <div>
+                <input type="text" placeholder="Search order ID" class="form-control bg-white">
+            </div>
+        </div>
+        <div class="card mb-4">
+            <header class="card-header" style="background-color: white;">
+                <div class="row gx-3">
+                    <div class="col-lg-4 col-md-6 me-auto">
+                        <input type="text" placeholder="Search..." class="form-control">
+                    </div>
+                    <div class="col-lg-2 col-6 col-md-3">
+                        <select class="form-select">
+                            <option>Status</option>
+                            <option>Active</option>
+                            <option>Disabled</option>
+                            <option>Show all</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-2 col-6 col-md-3">
+                        <select class="form-select">
+                            <option>Show 20</option>
+                            <option>Show 30</option>
+                            <option>Show 40</option>
+                        </select>
+                    </div>
+                    <div>
+                        <a href="#" class="btn btn-light rounded font-md">Export</a>
+                        <a href="#" class="btn btn-light rounded font-md">Import</a>
+                        <!-- <a href="#" class="btn btn-primary btn-sm rounded">Create new</a> -->
+                        <button type="button"class="btn btn-primary btn-sm rounded"(click)="open(mymodal1)">Create new</button>
+                    </div>
+                    <!-- add product popo up -->
+                    <ng-template #mymodal1 let-modal1>
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="modal-basic-title" >Add new Product</h4>
+                            <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
+                                <span aria-hidden="true" (click)="cancel()">×</span>
+                            </button>
+            
+                        </div>
+                        <div class="card mb-4">
+                        <form>
+                            
+                            
+                                <div class="card-body">
+                                    <div class="mb-4">
+                                        <label for="product_title" class="form-label">Product Name</label>
+                                        <input type="text" placeholder="Type here"  class="form-control" [(ngModel)]="products.nameProd"
+                                        [ngModelOptions]="{standalone : true}">
+                                    </div>
+                                    <div class="row gx-3">
+                                        <div class="col-md-4 mb-3">
+                                            <label for="product_sku" class="form-label">Unit Price HTVA</label>
+                                            <input type="text" placeholder="Type here"  class="form-control" [(ngModel)]="products.unit_price_htva"
+                                            [ngModelOptions]="{standalone : true}">
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="product_color" class="form-label">Bar Code</label>
+                                            <input type="text" placeholder="Type here"  class="form-control" [(ngModel)]="products.barCode"
+                                            [ngModelOptions]="{standalone : true}">
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="product_size" class="form-label">TVA</label>
+                                            <input type="text" placeholder="Type here"  class="form-control"  [(ngModel)]="products.tva"
+                                            [ngModelOptions]="{standalone : true}">
+                                        </div>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="product_brand" class="form-label">Category</label>
+                                        <input type="text" placeholder="Type here"   class="form-control" [(ngModel)]="products.productCategory"
+                                        [ngModelOptions]="{standalone : true}">
+                                    </div>
+                                </div>
+                            
+                            <br>
+                            <button type="button" class="btn btn-success" (click)="addProduct(products)" (click)="modal1.close('Save click')">Add</button> 
+                            <button type="button" class="btn btn-info" (click)="modal1.close('Save click')" >Cancel</button>
+                        </form>
+                    </div>
+                    </ng-template>
+                    <!-- end add product popo up -->
+                </div>
+            </header>
+            <!-- card-header end// -->
+            <!-- display products -->
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th scope="col">Bar Code</th>
+                                <th scope="col">Unit Price HTVA</th>
+                                <th scope="col">Tva</th>
+                                <th scope="col">Category</th>
+                                <th scope="col" class="text-end">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          
+                            <tr *ngFor='let p of listProducts'>
+                                <td>{{p.nameProd}}</td>
+                                <td>{{p.barCode}}</td>
+                                <td>{{p.unit_price_htva}}</td>
+                                <td>{{p.tva}}</td>
+                                <td>{{p.productCategory}}</td>
+                                <td class="text-end">
+                                    <!-- <a href="#" class="btn btn-md rounded font-sm">Detail</a> -->
+                                    <!-- <div class="dropdown">
+                                        <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
+                                        <div class="dropdown-menu"> -->
+                                            <!-- <a class="dropdown-item" >View detail</a> -->
+                                            <a class="dropdown-item"  (click)="open(mymodal)">Edit info</a>
+                                            <a class="dropdown-item text-danger" (click)="deleteProduct(p.idProd)">Delete</a>
+                                        <!-- </div>
+                                    </div> -->
+                                    <!-- dropdown //end -->
+                                </td>
+                               
+                                            
+                                            <!-- edit -->
+                                            <!-- end edit  -->
+                                            <!-- <a class="dropdown-item" href="#">Edit info</a> -->
+                                            
+                                                <ng-template #mymodal let-modal>
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="modal-basic-title">Edit</h4>
+                                                        <button type="button" class="close" aria-label="Close"
+                                                            (click)="modal.dismiss('Cross click')">
+                                                            <span aria-hidden="true" (click)="cancel()">×</span>
+                
+                                                        </button>
+                
+                                                    </div>
+                                                    <div>
+                                                    <form>
+                                                        <div class="modal-body">
+                
+                                                            <div class="row" class="col-md-5">
+                                                                <label>Product Name</label>
+                                                                <input type="text" [(ngModel)]="p.nameProd" [ngModelOptions]="{standalone : true}" />
+                                                            </div>
+                                                            <div class="row" class="col-md-5">
+                                                                <label>Unit Price HTVA</label>
+                                                                <input type="number" [(ngModel)]="p.unit_price_htva" [ngModelOptions]="{standalone : true}" />
+                                                            </div>
+                                                            <div class="row" class="col-md-5">
+                                                                <label>Bar Code</label>
+                                                                <input type="text" [(ngModel)]="p.barCode" [ngModelOptions]="{standalone : true}" />
+                                                            </div>
+                                                            <div class="row" class="col-md-5">
+                                                                <label>Tva</label>
+                                                                <input type="number" [(ngModel)]="p.tva" [ngModelOptions]="{standalone : true}" />
+                                                            </div>
+                                                            <div class="row" class="col-md-5">
+                                                                <label>Category</label>
+                                                                <input type="number" [(ngModel)]="p.productCategory" [ngModelOptions]="{standalone : true}" />
+                                                            </div>
+                                                        </div>
+                
+                                                        <div class="modal-footer">
+                
+                                                            <button type="button" class="btn btn-info"
+                                                                (click)="modal.close('Save click')" (click)="cancel()">Cancel</button>
+                                                            <button class="btn btn-success"(click)="editProduct(p)" (click)="modal.close('Save click')">Validate</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                </ng-template>
+                                        <!-- </div>
+                                    </div> -->
+                                    <!-- dropdown //end -->
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- table-responsive //end -->
+            </div>
+            <!-- card-body end// -->
+        </div>
+        
+        <!-- card end// -->
+        <div class="pagination-area mt-15 mb-50">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-start">
+                    <li class="page-item active"><a class="page-link" href="#">01</a></li>
+                    <li class="page-item"><a class="page-link" href="#">02</a></li>
+                    <li class="page-item"><a class="page-link" href="#">03</a></li>
+                    <li class="page-item"><a class="page-link dot" href="#">...</a></li>
+                    <li class="page-item"><a class="page-link" href="#">16</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#"><i class="material-icons md-chevron_right"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+</main>
+<app-footer-b></app-footer-b>

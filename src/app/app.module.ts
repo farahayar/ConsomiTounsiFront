@@ -14,6 +14,12 @@ import { DashboardComponent } from './admin/pages/dashboard/dashboard.component'
 import { SidebarComponent } from './admin/layouts/sidebar/sidebar.component';
 import { NavBarBComponent } from './admin/layouts/nav-bar-b/nav-bar-b.component';
 import { FooterBComponent } from './admin/layouts/footer-b/footer-b.component';
+import { ProductsComponent } from './pages/products/products.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { RouterOutlet } from '@angular/router'
+import { FormulaireProductComponent } from './pages/formulaire-product/formulaire-product.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -28,12 +34,30 @@ import { FooterBComponent } from './admin/layouts/footer-b/footer-b.component';
     DashboardComponent,
     SidebarComponent,
     NavBarBComponent,
-    FooterBComponent
+    FooterBComponent,
+    ProductsComponent,
+    FormulaireProductComponent
   ],
   imports: [
+    
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    NgbModule
+   
   ],
+//   exports: [
+//     FooterBComponent,
+//     NavBarBComponent,
+//     SidebarComponent,
+//     NavBarBComponent,
+//     FooterBComponent,
+//     DashboardComponent,
+//     RouterOutlet,
+//     BackOfficeComponent,
+//     FrontOfficeComponent
+// ],
   providers: [],
   bootstrap: [AppComponent]
 })
