@@ -20,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChatComponent } from './user/pages/chat/chat.component';
+import { LoginComponent } from './user/pages/login/login.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { ChatComponent } from './user/pages/chat/chat.component';
     SidebarComponent,
     NavBarBComponent,
     FooterBComponent,
-    ChatComponent
+    ChatComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

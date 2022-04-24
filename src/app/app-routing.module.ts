@@ -6,6 +6,7 @@ import { BackOfficeComponent } from './layouts/back-office/back-office.component
 import { FrontOfficeComponent } from './layouts/front-office/front-office.component';
 import { HomeComponent } from './user/home/home.component';
 import { ForumComponent } from './user/pages/forum/forum.component';
+import { LoginComponent } from './user/pages/login/login.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,10 @@ const routes: Routes = [
       {
         path: 'forum',
         component: ForumComponent
+      },
+      {
+        path: 'login',
+        component: LoginComponent
       },
     ]
   },
