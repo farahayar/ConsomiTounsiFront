@@ -18,6 +18,8 @@ export class ProductsComponent implements OnInit {
   closeResult!: string;
   listProducts :any;
   listSize;
+  searchInput: string = "";
+  a: any = [];
 
   constructor(private productService: ProductService , private modalService: NgbModal) { } //amlna injection lproduct service , private modalService: NgbModal
   //constructor() { }
@@ -37,6 +39,7 @@ export class ProductsComponent implements OnInit {
 getAllProducts() {
   this.productService.getAllProducts().subscribe((res) => {
     this.listProducts = res;
+    this.a = res;
   this.listSize=(Array)(this.listProducts).length}
     )
 }
@@ -63,6 +66,13 @@ open(content: any) {
   }, (reason) => {
     this.closeResult = `Dismissed ${this.getAllProducts()}`;
   });
+  }
+
+  onSearchChange(){
+    if(this.searchInput.length)
+      this.listProducts = this.listProducts.filter(elem=>elem.nameProd.toLowerCase().includes(this.searchInput.toLowerCase()))
+    else
+      this.listProducts = this.a;
   }
 
 

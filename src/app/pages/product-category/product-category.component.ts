@@ -15,6 +15,8 @@ export class ProductCategoryComponent implements OnInit {
   closeResult!: string;
   listPc :any;
   listSize;
+  searchInput: string = "";
+  a: any = [];
   constructor(private pc: ProductCategoryService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
@@ -30,6 +32,7 @@ export class ProductCategoryComponent implements OnInit {
   getAllPc() {
     this.pc.getAllPc().subscribe((res) => {
       this.listPc = res;
+      this.a = res;
     this.listSize=(Array)(this.listPc).length}
       )
   }
@@ -56,6 +59,13 @@ export class ProductCategoryComponent implements OnInit {
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getAllPc()}`;
     });
+    }
+
+    onSearchChange(){
+      if(this.searchInput.length)
+        this.listPc = this.listPc.filter(elem=>elem.name_CategoryProd.toLowerCase().includes(this.searchInput.toLowerCase()))
+      else
+        this.listPc = this.a;
     }
   
 

@@ -21,6 +21,12 @@ import { RouterOutlet } from '@angular/router'
 import { FormulaireProductComponent } from './pages/formulaire-product/formulaire-product.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ProductCategoryComponent } from './pages/product-category/product-category.component';
+import { AdsComponent } from './pages/ads/ads.component';
+import { AdsfrontComponent } from './user/pages/adsfront/adsfront.component';
+import { ProductfrontComponent } from './user/pages/productfront/productfront.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -38,7 +44,14 @@ import { ProductCategoryComponent } from './pages/product-category/product-categ
     FooterBComponent,
     ProductsComponent,
     FormulaireProductComponent,
-    ProductCategoryComponent
+    ProductCategoryComponent,
+    AdsComponent,
+    AdsfrontComponent,
+    ProductfrontComponent,
+    
+    
+    
+    
   ],
   imports: [
     
@@ -46,20 +59,23 @@ import { ProductCategoryComponent } from './pages/product-category/product-categ
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    
    
   ],
-//   exports: [
-//     FooterBComponent,
-//     NavBarBComponent,
-//     SidebarComponent,
-//     NavBarBComponent,
-//     FooterBComponent,
-//     DashboardComponent,
-//     RouterOutlet,
-//     BackOfficeComponent,
-//     FrontOfficeComponent
-// ],
+   exports: [
+     FooterBComponent,
+     NavBarBComponent,
+     SidebarComponent,
+     NavBarBComponent,
+    FooterBComponent,
+    DashboardComponent,
+    RouterOutlet,
+    BackOfficeComponent,
+    FrontOfficeComponent,
+   
+   
+ ],
   providers: [],
   bootstrap: [AppComponent]
 })

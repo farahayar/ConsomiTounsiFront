@@ -15,7 +15,8 @@
             <header class="card-header" style="background-color: white;">
                 <div class="row gx-3">
                     <div class="col-lg-4 col-md-6 me-auto">
-                        <input type="text" placeholder="Search..." class="form-control">
+                        <input type="text" placeholder="Search..." [(ngModel)]="searchInput" [ngModelOptions]="{standalone: true}"
+                        (ngModelChange)="onSearchChange()" class="form-control">
                     </div>
                     <div class="col-lg-2 col-6 col-md-3">
                         <select class="form-select">
@@ -145,25 +146,25 @@
                                                     <form>
                                                         <div class="modal-body">
                 
-                                                            <div class="row" class="col-md-5">
+                                                            <div class="row" class="mb-4">
                                                                 <label>Product Name</label>
-                                                                <input type="text" [(ngModel)]="p.nameProd" [ngModelOptions]="{standalone : true}" />
+                                                                <input type="text" [(ngModel)]="p.nameProd"   class="form-control" [ngModelOptions]="{standalone : true}" />
                                                             </div>
-                                                            <div class="row" class="col-md-5">
+                                                            <div class="row" class="mb-4">
                                                                 <label>Unit Price HTVA</label>
-                                                                <input type="number" [(ngModel)]="p.unit_price_htva" [ngModelOptions]="{standalone : true}" />
+                                                                <input type="number" [(ngModel)]="p.unit_price_htva"  class="form-control" [ngModelOptions]="{standalone : true}" />
                                                             </div>
-                                                            <div class="row" class="col-md-5">
+                                                            <div class="row" class="mb-4">
                                                                 <label>Bar Code</label>
-                                                                <input type="text" [(ngModel)]="p.barCode" [ngModelOptions]="{standalone : true}" />
+                                                                <input type="text" [(ngModel)]="p.barCode"  class="form-control" [ngModelOptions]="{standalone : true}" />
                                                             </div>
-                                                            <div class="row" class="col-md-5">
+                                                            <div class="row" class="mb-4">
                                                                 <label>Tva</label>
-                                                                <input type="number" [(ngModel)]="p.tva" [ngModelOptions]="{standalone : true}" />
+                                                                <input type="number" [(ngModel)]="p.tva"  class="form-control" [ngModelOptions]="{standalone : true}" />
                                                             </div>
-                                                            <div class="row" class="col-md-5">
+                                                            <div class="row" class="mb-4">
                                                                 <label>Category</label>
-                                                                <input type="number" [(ngModel)]="p.productCategory" [ngModelOptions]="{standalone : true}" />
+                                                                <input type="number" [(ngModel)]="p.productCategory"  class="form-control" [ngModelOptions]="{standalone : true}" />
                                                             </div>
                                                         </div>
                 
@@ -181,15 +182,19 @@
                                     <!-- dropdown //end -->
                                 
                             </tr>
+                            
                         </tbody>
                     </table>
+                    
                 </div>
                 <!-- table-responsive //end -->
             </div>
             <!-- card-body end// -->
+            
         </div>
         
         <!-- card end// -->
+        
         <div class="pagination-area mt-15 mb-50">
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-start">
