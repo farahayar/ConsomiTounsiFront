@@ -17,7 +17,14 @@ export class ForumComponent implements OnInit {
   }
 
   getAllProducts(){
-    this.fs.getAllProblems().subscribe((res) => {this.listProblems = res})
+    this.fs.getAllProblems().subscribe((res) => {
+      this.listProblems = res;
+      console.log("res :"+res);
+      
+    }, (err) => {
+      console.log(err);
+
+    });
   }
 
 }

@@ -12,24 +12,31 @@ import { User } from 'src/app/models/user';
 })
 export class ChatComponent implements OnInit {
 
-  userId: any = 5;
+  //TODO change me
+  userId: any = 3;
+  name:string="user";
   messages: any[] = [];
   messageInput: string;
   constructor(private chatService: ChatService) { }
 
   ngOnInit() {
-    this.chatService.initializeWebSocketConnection();
+    this.chatService.initializeWebSocketConnection(this.userId);
     this.initChatJquery()
+    this.chatService.getMessageWithAdmin(this.userId).subscribe(
+      res=>{
+        this.messages=res;
+        console.log(res)
+      }
+    )
     this.chatService.onMessage().subscribe((newMsg: any) => {
-      if (newMsg.sender != this.userId)
+      if (newMsg.reciver.userid == this.userId)
         this.playAudio()
       this.messages.push(newMsg)
     })
   }
 
   onSend() {
-    console.log(this.messageInput)
-    let chat = new Chat(new User(this.userId),new User(5), this.messageInput, new Date());
+    let chat = new Chat(new User(this.userId,name),new User(null,""), this.messageInput, new Date());
     this.messageInput = "";
     console.log(chat)
     this.chatService.publishMessage(chat).subscribe((res: any) => {

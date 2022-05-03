@@ -21,6 +21,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChatComponent } from './user/pages/chat/chat.component';
 import { LoginComponent } from './user/pages/login/login.component';
+import { ChatBackComponent } from './admin/pages/chat-back/chat-back.component';
+import { AddQuestionComponent } from './user/pages/add-question/add-question.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { LoginComponent } from './user/pages/login/login.component';
     NavBarBComponent,
     FooterBComponent,
     ChatComponent,
-    LoginComponent
+    LoginComponent,
+    ChatBackComponent,
+    AddQuestionComponent
   ],
   imports: [
     BrowserModule,

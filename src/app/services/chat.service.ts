@@ -12,31 +12,31 @@ import { environment } from 'src/environments/environment';
 export class ChatService {
 
   API_URL: String = environment.API_URL;
-  
+
   stompClient: any;
   userId: any = 5;
   subject = new Subject<any>();
 
-  constructor(private httpClient:HttpClient) { }
-  
-  initializeWebSocketConnection() {
-    const ws = new SockJS(this.API_URL+"/socket");
+  constructor(private httpClient: HttpClient) { }
+
+  initializeWebSocketConnection(userId) {
+    const ws = new SockJS(this.API_URL + "/socket");
     this.stompClient = Stomp.over(ws);
     const that = this;
     this.stompClient.connect({}, frame => {
-      that.openGlobalSocket();
+      that.openChat(userId);
     }, err => {
       console.log(err);
     });
   }
 
-  openGlobalSocket() {
-    this.stompClient.subscribe(`/chat/${this.userId}`, (res) => {
+  openChat(userId) {
+    this.stompClient.subscribe(`/chat/${userId}`, (res) => {
       this.sendMessage(JSON.parse(res.body))
     });
 
   }
-  
+
   sendMessage(message: any) {
     this.subject.next(message);
   }
@@ -49,8 +49,16 @@ export class ChatService {
     return this.subject.asObservable();
   }
 
-  publishMessage(chat:Chat):any{
-   return  this.httpClient.post<any>(`${this.API_URL}/api/sendMessage`,chat);
+  publishMessage(chat: Chat): any {
+    return this.httpClient.post<any>(`${this.API_URL}/chatsController/sendMessage`, chat);
+  }
+
+  getMessageWithAdmin(userId): any {
+    return this.httpClient.get<any>(`${this.API_URL}/chatsController/getMessageWithAdmin/${userId}`);
+  }
+
+  getAdminListChat(): any {
+    return this.httpClient.get<any>(`${this.API_URL}/chatsController/getAdminListChat`);
   }
 
 }

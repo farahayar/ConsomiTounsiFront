@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ForumService {
 
-  readonly API_URL = environment.API_URL;
+  readonly API_URL = environment.API_URL+"/problemsController";
 
   constructor(private httpClient: HttpClient) { }
   
