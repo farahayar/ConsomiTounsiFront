@@ -14,7 +14,13 @@ import { DashboardComponent } from './admin/pages/dashboard/dashboard.component'
 import { SidebarComponent } from './admin/layouts/sidebar/sidebar.component';
 import { NavBarBComponent } from './admin/layouts/nav-bar-b/nav-bar-b.component';
 import { FooterBComponent } from './admin/layouts/footer-b/footer-b.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ChatComponent } from './user/pages/chat/chat.component';
 import { LoginComponent } from './user/login/login.component';
+
 
 @NgModule({
   declarations: [
@@ -30,11 +36,22 @@ import { LoginComponent } from './user/login/login.component';
     SidebarComponent,
     NavBarBComponent,
     FooterBComponent,
-    LoginComponent
+    LoginComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    NgbModule
+    // ToastrModule.forRoot({
+    //   timeOut: 1000,
+    //   positionClass: 'toast-bottom-right',
+    //   preventDuplicates: true,
+    // })
   ],
   providers: [],
   bootstrap: [AppComponent]
