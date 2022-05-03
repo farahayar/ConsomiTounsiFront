@@ -20,6 +20,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChatComponent } from './user/pages/chat/chat.component';
 import { LoginComponent } from './user/login/login.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { environment } from 'src/environments/environment';
+import { AuthService } from './user/service/auth.service';
 
 
 @NgModule({
@@ -46,14 +50,17 @@ import { LoginComponent } from './user/login/login.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+
     // ToastrModule.forRoot({
     //   timeOut: 1000,
     //   positionClass: 'toast-bottom-right',
     //   preventDuplicates: true,
     // })
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

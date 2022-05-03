@@ -4,7 +4,18 @@
 
 export const environment = {
   production: false,
-  API_URL:'http://localhost:8087/ConsomiTounsi'
+  API_URL:'http://localhost:8087/ConsomiTounsi',
+
+  firebase: {
+    apiKey: "AIzaSyAsJzLl8E_7V3Woj9yYnXyAPKzf9GUDpso",
+    authDomain: "consomitounsi-48e60.firebaseapp.com",
+    projectId: "consomitounsi-48e60",
+    storageBucket: "consomitounsi-48e60.appspot.com",
+    messagingSenderId: "272111121689",
+    appId: "1:272111121689:web:0e1f646e59b3555f9a4188",
+    measurementId: "G-MKTG4DCTR5"
+  }
+
 };
 
 /*
