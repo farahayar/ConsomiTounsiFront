@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Chat {\n  constructor(sender, reciver, message, date) {\n    this.sender = sender;\n    this.reciver = reciver;\n    this.message = message;\n    this.date = date;\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}
