@@ -11,15 +11,15 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~11.0.0",
-    "@angular/common": "~11.0.0",
-    "@angular/compiler": "~11.0.0",
-    "@angular/core": "~11.0.0",
+    "@angular/animations": "~12.2.16",
+    "@angular/common": "~12.2.16",
+    "@angular/compiler": "~12.2.16",
+    "@angular/core": "~12.2.16",
     "@angular/fire": "^6.1.5",
-    "@angular/forms": "~11.0.0",
-    "@angular/platform-browser": "~11.0.0",
-    "@angular/platform-browser-dynamic": "~11.0.0",
-    "@angular/router": "~11.0.0",
+    "@angular/forms": "~12.2.16",
+    "@angular/platform-browser": "~12.2.16",
+    "@angular/platform-browser-dynamic": "~12.2.16",
+    "@angular/router": "~12.2.16",
     "@ng-bootstrap/ng-bootstrap": "^9.1.3",
     "bootstrap": "^5.1.3",
     "firebase": "^8.10.1",
@@ -29,13 +29,13 @@
     "sockjs-client": "^1.6.0",
     "stompjs": "^2.3.3",
     "tslib": "^2.0.0",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.11.5"
   },
   "devDependencies": {
     "@angular-devkit/architect": ">= 0.900 < 0.1300",
     "@angular-devkit/build-angular": "^13.3.4",
     "@angular/cli": "^13.3.4",
-    "@angular/compiler-cli": "~11.0.0",
+    "@angular/compiler-cli": "~12.2.16",
     "@types/jasmine": "~3.6.0",
     "@types/jquery": "^3.5.14",
     "@types/node": "^12.11.1",
@@ -56,6 +56,6 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~4.0.2"
+    "typescript": "~4.3.5"
   }
 }
