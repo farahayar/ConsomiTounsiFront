@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const observable = /*#__PURE__*/(() => typeof Symbol === 'function' && Symbol.observable || '@@observable')(); //# sourceMappingURL=observable.js.map","map":null,"metadata":{},"sourceType":"module"}

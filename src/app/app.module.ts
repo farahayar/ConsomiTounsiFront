@@ -19,11 +19,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChatComponent } from './user/pages/chat/chat.component';
-import { LoginComponent } from './user/login/login.component';
+import { LoginComponent } from './user/pages/login/login.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { environment } from 'src/environments/environment';
-import { AuthService } from './user/service/auth.service';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { environment } from '../environments/environment';
+import { RegisterComponent } from './user/pages/register/register.component';
+import { ProfileComponent } from './user/pages/profile/profile.component';
+// import { AuthService } from './user/service/auth.service';
+import { authInterceptorProviders } from './user/_helpers/auth.interceptor';
+
 
 
 @NgModule({
@@ -41,7 +48,9 @@ import { AuthService } from './user/service/auth.service';
     NavBarBComponent,
     FooterBComponent,
     LoginComponent,
-    ChatComponent
+    ChatComponent,
+    RegisterComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +62,9 @@ import { AuthService } from './user/service/auth.service';
     NgbModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
 
     // ToastrModule.forRoot({
     //   timeOut: 1000,
@@ -60,7 +72,8 @@ import { AuthService } from './user/service/auth.service';
     //   preventDuplicates: true,
     // })
   ],
-  providers: [AuthService],
+  // providers: [AuthService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

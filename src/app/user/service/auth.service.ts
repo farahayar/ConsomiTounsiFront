@@ -1,26 +1,25 @@
 import { Injectable } from '@angular/core';
-import { FacebookAuthProvider } from 'firebase/auth';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+const AUTH_API = 'http://localhost:8080/api/auth/';
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class AuthService {
-  constructor(
-    public afAuth: AngularFireAuth // Inject Firebase auth service
-  ) {}
-  // Sign in with Facebook
-  FacebookAuth() {
-    return this.AuthLogin(new FacebookAuthProvider());
+  constructor(private http: HttpClient) { }
+  login(email: string, password: string): Observable<any> {
+    return this.http.post(AUTH_API + 'signin', {
+      email,
+      password
+    }, httpOptions);
   }
-  // Auth logic to run auth providers
-  AuthLogin(provider) {
-    return this.afAuth
-      .signInWithPopup(provider)
-      .then((result) => {
-        console.log('You have been successfully logged in!');
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  register(email: string, password: string): Observable<any> {
+    return this.http.post(AUTH_API + 'signup', {
+      email,
+      password
+    }, httpOptions);
   }
 }

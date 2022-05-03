@@ -5,8 +5,9 @@ import { SignInComponent } from './admin/sign-in/sign-in.component';
 import { BackOfficeComponent } from './layouts/back-office/back-office.component';
 import { FrontOfficeComponent } from './layouts/front-office/front-office.component';
 import { HomeComponent } from './user/home/home.component';
-import { LoginComponent } from './user/login/login.component';
+import { LoginComponent } from './user/pages/login/login.component';
 import { ForumComponent } from './user/pages/forum/forum.component';
+import { RegisterComponent } from './user/pages/register/register.component';
 
 const routes: Routes = [
   {
@@ -23,16 +24,20 @@ const routes: Routes = [
         component: HomeComponent
       },
       {
+        path: 'login',
+        component: LoginComponent
+      },
+      {
         path: 'forum',
         component: ForumComponent
+      },
+      {
+        path: 'register',
+        component: RegisterComponent
       },
       
     ]
   },
-  {
-        path: 'login',
-        component: LoginComponent
-      },
   {
     path: 'admin',
     component: BackOfficeComponent,
