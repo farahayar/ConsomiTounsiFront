@@ -21,7 +21,7 @@
                                 <div class="padding_eight_all bg-white">
                                     <div class="heading_s1">
                                         <h1 class="mb-5">Login</h1>
-                                        <p class="mb-30">Don't have an account? <a href="/home/Register">Create here</a></p>
+                                        <p class="mb-30">Don't have an account? <a href="/home/register">Create here</a></p>
                                     </div>
                                     <form *ngIf="!isLoggedIn"
                                     name="form"
@@ -44,6 +44,7 @@
         >
           email is required!
         </div>
+        
                                         </div>
                                         <div class="form-group">
                                             <input
@@ -67,7 +68,7 @@
         </div>
                                         </div>
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-heading btn-block hover-up" name="login">Log in</button>
+                                            <button type="submit" class="btn btn-heading btn-block hover-up" name="login" (click)="Authenticate">Log in</button>
                                         </div>
                                         <div class="form-group">
                                             <div

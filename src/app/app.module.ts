@@ -15,7 +15,7 @@ import { SidebarComponent } from './admin/layouts/sidebar/sidebar.component';
 import { NavBarBComponent } from './admin/layouts/nav-bar-b/nav-bar-b.component';
 import { FooterBComponent } from './admin/layouts/footer-b/footer-b.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChatComponent } from './user/pages/chat/chat.component';
@@ -29,7 +29,7 @@ import { environment } from '../environments/environment';
 import { RegisterComponent } from './user/pages/register/register.component';
 import { ProfileComponent } from './user/pages/profile/profile.component';
 // import { AuthService } from './user/service/auth.service';
-import { authInterceptorProviders } from './user/_helpers/auth.interceptor';
+import { BasicAuthHtppInterceptorService } from './user/_helpers/auth.interceptor';
 
 
 
@@ -73,7 +73,11 @@ import { authInterceptorProviders } from './user/_helpers/auth.interceptor';
     // })
   ],
   // providers: [AuthService],
-  providers: [],
+  providers: [
+    {
+    provide:HTTP_INTERCEPTORS, useClass:BasicAuthHtppInterceptorService, multi:true
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
