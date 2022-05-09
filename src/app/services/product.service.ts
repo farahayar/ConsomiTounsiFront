@@ -10,8 +10,11 @@ export class ProductService {
     getAllProducts(){
         return this.httpClient.get(`${this.API_URL}/afficherProducts`)
     }
-    addProduct(products: any){
-        return this.httpClient.post(`${this.API_URL}/ajouterproduct`, products)
+    getProductDetails(idProd: any){
+        return this.httpClient.get(`${this.API_URL}/afficherProducts/${idProd}`)
+    }
+    addProduct(products: any, idCategoryProd){
+        return this.httpClient.post(`${this.API_URL}/ajouterproduct/${idCategoryProd}`, products)
     }
     editProduct(products: any){
         return this.httpClient.put(`${this.API_URL}/updateproduct`, products)
@@ -19,5 +22,6 @@ export class ProductService {
     deleteProduct(idProd: any){
         return this.httpClient.delete(`${this.API_URL}/deleteproduct/${idProd}`)
     }
+
 
 }

@@ -80,6 +80,10 @@ open(content: any) {
       this.listAds = this.a;
   }
 
+  cancel(){
+    this.ngOnInit();
+  }
+
   
 
 

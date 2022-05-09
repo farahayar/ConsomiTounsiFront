@@ -1,3 +1,5 @@
+import { ProductCategory } from "./product-category";
+
 export class Products {
     idProd: any ;
 	barCode: any  ;
@@ -6,4 +8,6 @@ export class Products {
 	tva : any;
 	productCategory: any;
 	ads: any;
+	add_date: Date;
+
 }

@@ -16,7 +16,7 @@ import { NavBarBComponent } from './admin/layouts/nav-bar-b/nav-bar-b.component'
 import { FooterBComponent } from './admin/layouts/footer-b/footer-b.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router'
 import { FormulaireProductComponent } from './pages/formulaire-product/formulaire-product.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -24,6 +24,14 @@ import { ProductCategoryComponent } from './pages/product-category/product-categ
 import { AdsComponent } from './pages/ads/ads.component';
 import { AdsfrontComponent } from './user/pages/adsfront/adsfront.component';
 import { ProductfrontComponent } from './user/pages/productfront/productfront.component';
+import { DatePipe } from '@angular/common';
+//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//import { ToastrModule } from 'ngx-toastr';
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import { ShareIconsModule } from 'ngx-sharebuttons/icons';
+
+
+
 
 
 
@@ -60,6 +68,16 @@ import { ProductfrontComponent } from './user/pages/productfront/productfront.co
     HttpClientModule,
     FormsModule,
     NgbModule,
+    ReactiveFormsModule,
+    ShareButtonsModule.withConfig({
+      debug: true
+    }),
+    ShareIconsModule,
+    //BrowserAnimationsModule,
+   // ToastrModule.forRoot(),
+    
+   
+    
     
    
   ],
@@ -76,7 +94,7 @@ import { ProductfrontComponent } from './user/pages/productfront/productfront.co
    
    
  ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              
               "src/styles.scss"
             ],
             "scripts": [
@@ -127,5 +128,6 @@
       }
     }
   },
+  
   "defaultProject": "consomiTounsiFront"
 }
