@@ -53,28 +53,28 @@
                         [ngModelOptions]="{standalone : true}" required pattern="619.*" id="bar" placeholder="Bar Code should start with 619">
                     </div>
                    
-                    <div class="row gx-3">
-                        <div class="col-md-4 mb-3">
-                            <label for="product_sku" class="form-label" style="color:black;">Unit Price HTVA</label>
+                   
+                        <div class="mb-4">
+                            <label for="product_sku" class="form-label" style="color:black;">Price</label>
                             <input type="number" placeholder="Type here"  class="form-control" [(ngModel)]="products.unit_price_htva"
                             [ngModelOptions]="{standalone : true}" required>
                         </div>
-                        <div class="col-md-4 mb-3">
+                        <!-- <div class="col-md-4 mb-3">
                             <label for="product_title" class="form-label" style="color:black;">Added Date</label>
                             <input type="date" placeholder="Type here"  class="form-control" [(ngModel)]="products.add_date"
                             [ngModelOptions]="{standalone : true}" required>
                            
-                           <!-- <abbr title="Ce champ est obligatoire">*</abbr> -->
-                        </div>
+                           <abbr title="Ce champ est obligatoire">*</abbr>
+                        </div> -->
                       
                         
                         
-                        <div class="col-md-4 mb-3">
+                        <!-- <div class="col-md-4 mb-3">
                             <label for="product_size" class="form-label" style="color:black;">TVA</label>
                             <input type="number" placeholder="Type here"  class="form-control"  [(ngModel)]="products.tva"
                             [ngModelOptions]="{standalone : true}" required>
-                        </div>
-                    </div>
+                        </div> -->
+                    
 <!--
                     <select *ngFor="let c of listPc">
                         <option value="">{{c.name_CategoryProd}}</option>
@@ -88,7 +88,7 @@
                
 <mat-form-field appearance="fill">
   <mat-label class="selectFormControl" style="color:black;">Category</mat-label>
-  <select [(ngModel)]="products.idCategoryProd"   [ngModelOptions]="{standalone : true}" required>
+  <select [(ngModel)]="products.idCategoryProd"   [ngModelOptions]="{standalone : true}"  ng-change="switchLanguage" required>
     <option label="--select something --"></option>
     
     <option *ngFor="let productCategory of listPc" value="{{productCategory.idCategoryProd}}" id="idcat" class="selectFormControl" >
@@ -99,6 +99,12 @@
   <!-- <mat-error *ngIf="animalControl.hasError('required')">Please choose a category</mat-error>
   <mat-hint>{{animalControl.value?.sound}}</mat-hint>  -->
 </mat-form-field>
+<script>
+    $scope.switchLanguage = function()
+{
+   var seletedValue = products.idCategoryProd;
+}
+</script>
 
 
   
@@ -169,7 +175,7 @@
 
 
                 <div class="row product-grid" >
-                    <div class="col-lg-1-5 col-md-4 col-12 col-sm-6" *ngFor='let p of listProducts'>
+                    <div class="col-lg-1-5 col-md-4 col-12 col-sm-6" *ngFor="let p of listProducts| paginate: { itemsPerPage: 10, currentPage: cp }" >
                         <div class="product-cart-wrap mb-30">
                             <div class="product-img-action-wrap">
                                 <div class="product-img product-img-zoom">
@@ -215,9 +221,24 @@
                                                 <input type="number" [(ngModel)]="p.tva"  class="form-control" [ngModelOptions]="{standalone : true}" />
                                             </div>
                                             <div class="row" class="mb-4">
-                                                <label>Category</label>
-                                                <input type="number" [(ngModel)]="p.productCategory"  class="form-control" [ngModelOptions]="{standalone : true}" />
+                                                <label>{{p.idCategoryProd}}</label>
+                                                <mat-form-field appearance="fill">
+                                                    <mat-label class="selectFormControl" style="color:black;">Category</mat-label>
+                                                    <select [(ngModel)]="products.idCategoryProd"   [ngModelOptions]="{standalone : true}" required>
+                                                      <option label="--select something --"></option>
+                                                      
+                                                      <option *ngFor="let productCategory of listPc" value="{{productCategory.idCategoryProd}}" id="idcat" class="selectFormControl" >
+                                                          {{productCategory.name_CategoryProd}}
+                                                      </option>
+                                                      </select>
+                                                    
+                                                    <!-- <mat-error *ngIf="animalControl.hasError('required')">Please choose a category</mat-error>
+                                                    <mat-hint>{{animalControl.value?.sound}}</mat-hint>  -->
+                                                  </mat-form-field>
+                                                <!-- <input type="number" [(ngModel)]="p.productCategory"  class="form-control" [ngModelOptions]="{standalone : true}" /> -->
                                             </div>
+
+                                            
                                         </div>
 
                                         <div class="modal-footer">
@@ -254,16 +275,14 @@
                                             <div class="row" class="mb-4">
                                                 <label>Bar Code: {{p.barCode}}</label>
                                             </div>
-                                            <div class="row" class="mb-4">
-                                                <label>Tva: {{p.tva}}</label>
-                                            </div>
+                                            
                                             
                                             <div class="row" class="mb-4">
                                                 <label>Add Date: {{p.add_date}} </label>
                                             </div>
-                                            <div class="row" class="mb-4">
-                                                <label>Category: {{p.productCategory}} </label>
-                                            </div>
+                                            <!-- <div class="row" class="mb-4">
+                                                <label>Category: seletedValue</label>
+                                            </div> -->
                                         </div>
                                        <!-- start rating -->
                                        <!-- <head>
@@ -366,28 +385,13 @@
                         </div>
                     </div>
                     <!--end product card-->
+                    <pagination-controls (pageChange)="cp = $event"></pagination-controls>
+
 
 
                 </div>
                 <!--product grid-->
-                <div class="pagination-area mt-20 mb-20">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-start" >
-                            <li class="page-item">
-                                <a class="page-link" ><i class="fi-rs-arrow-small-left"></i></a>
-                            </li> 
-                             <li class="page-item"><a class="page-link" >1</a></li>
-                            <li class="page-item active"><a class="page-link" >2</a></li>
-                            <li class="page-item"><a class="page-link">3</a></li>
-                            <li class="page-item"><a class="page-link dot" >...</a></li>
-                            <li class="page-item"><a class="page-link" >6</a></li>
-                            <li class="page-item"> -->
-                                <a class="page-link" ><i class="fi-rs-arrow-small-right"></i></a>
-                            </li>
-                        </ul>
- 
-                    </nav>
-                </div>
+                
                
                 <!--End Deals-->
             </div>
@@ -449,14 +453,14 @@
             <div style="overflow:auto;   width: 250px;  height: 570px;">
                 <ul *ngFor="let p of listPc">
                         <li>
-                            <a (click)="open(mymodal6)" > <img src="assets/imgs/theme/icons/category-1.svg" alt="">{{p.name_CategoryProd}}</a><a aria-label="Delete" class="action-btn" (click)="deletePc(p.idCategoryProd)"><i class="fi-rs-trash"></i></a><a aria-label="Edit" class="action-btn" (click)="open(mymodal4)"><i class="fi-rs-edit"></i></a>
+                            <a (click)="getProductByCategorie(idCategoryProd)" > <img src="assets/imgs/theme/icons/category-1.svg" alt="">{{p.name_CategoryProd}}</a><a aria-label="Delete" class="action-btn" (click)="deletePc(p.idCategoryProd)"><i class="fi-rs-trash"></i></a><a aria-label="Edit" class="action-btn" (click)="open(mymodal4)"><i class="fi-rs-edit"></i></a>
                             <!-- edit category -->
                             
                             <!-- model of prod by cat -->
-                            <ng-template #mymodal6 let-modal6 id="#mymodal6" >
+                            <!-- <ng-template #mymodal6 let-modal6 id="#mymodal6" >
                                 <div class="row product-grid" >
                                     <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
-                                        <!-- <button (click)="getProductByCategorie(p.idCategoryProd)">test</button> -->
+                                        <button (click)="getProductByCategorie(p.idCategoryProd)">test</button> 
                                         <div class="product-cart-wrap mb-30">
                                             <div class="product-img-action-wrap">
                                                 <div class="product-img product-img-zoom">
@@ -497,7 +501,7 @@
                                     </div>
                                     </div>
 
-                            </ng-template>
+                            </ng-template> -->
                             <!-- endmodel of prod by cat -->
                 <ng-template #mymodal4 let-modal4>
                     <div class="modal-header">

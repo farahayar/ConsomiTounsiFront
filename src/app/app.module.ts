@@ -29,6 +29,8 @@ import { DatePipe } from '@angular/common';
 //import { ToastrModule } from 'ngx-toastr';
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { ShareIconsModule } from 'ngx-sharebuttons/icons';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 
 
@@ -73,6 +75,7 @@ import { ShareIconsModule } from 'ngx-sharebuttons/icons';
       debug: true
     }),
     ShareIconsModule,
+    NgxPaginationModule
     //BrowserAnimationsModule,
    // ToastrModule.forRoot(),
     

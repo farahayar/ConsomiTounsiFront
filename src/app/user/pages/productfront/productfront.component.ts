@@ -19,7 +19,7 @@ declare var $: any;
   
 })
 export class ProductfrontComponent implements OnInit {
-  listProductsC: any;
+  cp: number = 1;
   listProductsCat:any;
   listPc :any;
   form: boolean = false;
@@ -34,8 +34,7 @@ export class ProductfrontComponent implements OnInit {
   starRating = 0; 
   //curDate= new Date();
   curDate: Date = new Date();
-  cp: number = 1;
-  title = 'toaster-not';
+ title = 'toaster-not';
   name = 'ngx sharebuttons';
   currentRate = 6;
   
@@ -66,6 +65,7 @@ export class ProductfrontComponent implements OnInit {
       
       
       
+      
   }
 
  
@@ -89,13 +89,7 @@ getAllProducts() {
   }
   )
 }
-getAllPc() {
-  this.pc.getAllPc().subscribe((res) => {
-    this.listPc = res;
-    
-  this.listSize=(Array)(this.listPc).length}
-    )
-}
+
 
 getRecentProducts() {
   this.productService.getRecentProducts().subscribe((res) => {
@@ -112,7 +106,7 @@ getRecentProducts() {
 getProductByCategorie(idCategoryProd: any) {
     this.productService.getProductByCategorie(idCategoryProd).subscribe((res) => {
     this.listProductsCat = res;
-    $('mymodal6').modal('show');
+    $('#mymodal6').modal('show');
    // router.navigate(['/role']);
    
     
@@ -124,7 +118,7 @@ addProduct(p: any, idCategoryProd:any) {
 
   
   console.log("aaaaaaaaaa"+idCategoryProd);
-  
+    this.products.add_date=new Date;
     this.productService.addProduct(p,idCategoryProd).subscribe(() => {
     this.getAllProducts();//après ajout bch yaffichi liste des produits
     this.ngOnInit();
@@ -161,7 +155,13 @@ onSearchChange() {
     this.listProducts = this.a;
 }
 
-
+getAllPc() {
+  this.pc.getAllPc().subscribe((res) => {
+    this.listPc = res;
+    
+  this.listSize=(Array)(this.listPc).length}
+    )
+}
 addPc(prc: any) {
   this.pc.addPc(prc).subscribe(()=> {
     this.getAllPc();//après ajout bch yaffichi liste des produits
