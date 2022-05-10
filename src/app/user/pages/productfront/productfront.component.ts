@@ -19,22 +19,27 @@ declare var $: any;
   
 })
 export class ProductfrontComponent implements OnInit {
-
+  listProductsC: any;
+  listProductsCat:any;
   listPc :any;
   form: boolean = false;
   products!: Products;
   productCategory!: ProductCategory;
   closeResult!: string;
   listProducts :any;
+  listRecentProducts :any;
   listSize;
   searchInput: string = "";
   a: any = [];
   starRating = 0; 
-  curDate= new Date();
+  //curDate= new Date();
+  curDate: Date = new Date();
   cp: number = 1;
   title = 'toaster-not';
   name = 'ngx sharebuttons';
   currentRate = 6;
+  
+  
 
   constructor(private productService: ProductService,private pc: ProductCategoryService ,private ra:RatingService,private router: Router, private modalService: NgbModal,public datepipe: DatePipe) { 
    let curDate =this.datepipe.transform((new Date), 'yyyy/MM/dd');
@@ -46,6 +51,8 @@ export class ProductfrontComponent implements OnInit {
   ngOnInit(): void {
     this.getAllPc();
     this.getAllProducts();
+    this.getRecentProducts();
+    //this.getProductByCategorie(this.productCategory);
     this.loadJS();
     this.products = {
       idProd: null,
@@ -75,11 +82,44 @@ getAllProducts() {
   this.productService.getAllProducts().subscribe((res) => {
     this.listProducts = res;
     this.a = res;
-    this.listSize = (Array)(this.listProducts).length
+    
+
+   // this.listSize = (Array)(this.listProducts).length
     
   }
   )
 }
+getAllPc() {
+  this.pc.getAllPc().subscribe((res) => {
+    this.listPc = res;
+    
+  this.listSize=(Array)(this.listPc).length}
+    )
+}
+
+getRecentProducts() {
+  this.productService.getRecentProducts().subscribe((res) => {
+    this.listRecentProducts = res;
+    //console.log("date"+this.curDate)
+    this.listSize=(Array)(this.listRecentProducts).length
+
+    //this.a = res;
+   // this.listSize = (Array)(this.listProducts).length
+    
+  }
+  )
+}
+getProductByCategorie(idCategoryProd: any) {
+    this.productService.getProductByCategorie(idCategoryProd).subscribe((res) => {
+    this.listProductsCat = res;
+    $('mymodal6').modal('show');
+   // router.navigate(['/role']);
+   
+    
+  }
+  )
+}
+
 addProduct(p: any, idCategoryProd:any) {
 
   
@@ -114,20 +154,14 @@ getProductDetails(idProd: any) {
 
 
 
-onSearchChangefront() {
+onSearchChange() {
   if (this.searchInput.length)
-    this.listProducts = this.listProducts.filter(elem => elem.nameProd.toLowerCase().includes(this.searchInput.toLowerCase()))
+    this.listProducts = this.listProducts.filter(elem => elem.nameProd?.toLowerCase().includes(this.searchInput.toLowerCase()))
   else
     this.listProducts = this.a;
 }
 
-getAllPc() {
-  this.pc.getAllPc().subscribe((res) => {
-    this.listPc = res;
-    
-  this.listSize=(Array)(this.listPc).length}
-    )
-}
+
 addPc(prc: any) {
   this.pc.addPc(prc).subscribe(()=> {
     this.getAllPc();//après ajout bch yaffichi liste des produits
@@ -198,3 +232,5 @@ rate(){
 
 }
 }
+
+

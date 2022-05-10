@@ -7,14 +7,14 @@
                     <div class="col-xl-3">
                         <h1 class="mb-15">Products</h1>
                         <div class="breadcrumb">
-                            <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+                            <a  rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
                             <span></span> Shop <span></span> Snack
                         </div>
                     </div>
 
                     <div class="col-xl-6 text-end d-none d-xl-block">
                         <input  type="text" placeholder="Search for items..." [(ngModel)]="searchInput" [ngModelOptions]="{standalone: true}"
-                        (ngModelChange)="onSearchChangefront()">
+                        (ngModelChange)="onSearchChange()">
                     </div>
                 </div>
             </div>
@@ -135,7 +135,7 @@
                             </div>
                             <div class="sort-by-dropdown">
                                 <ul>
-                                    <li><a class="active" href="#">50</a></li>
+                                    <li><a class="active">50</a></li>
                                     <li><a href="#">100</a></li>
                                     <li><a href="#">150</a></li>
                                     <li><a href="#">200</a></li>
@@ -154,7 +154,7 @@
                             </div>
                             <div class="sort-by-dropdown">
                                 <ul>
-                                    <li><a class="active" href="#">Featured</a></li>
+                                    <li><a class="active" >Featured</a></li>
                                     <li><a href="#">Price: Low to High</a></li>
                                     <li><a href="#">Price: High to Low</a></li>
                                     <li><a href="#">Release Date</a></li>
@@ -173,7 +173,7 @@
                         <div class="product-cart-wrap mb-30">
                             <div class="product-img-action-wrap">
                                 <div class="product-img product-img-zoom">
-                                    <a href="shop-product-right.html">
+                                    <a >
                                         <img class="default-img" src="assets/imgs/shop/nectar.webp" alt="">
                                         <img class="hover-img" src="assets/imgs/shop/product-1-2.jpg" alt="">
                                     </a>
@@ -343,9 +343,9 @@
                             </div>
                             <div class="product-content-wrap"  >
                                 <div class="product-category">
-                                    <a href="shop-grid-right.html">{{p.productCategory}}</a>
+                                    <a>{{p.productCategory}}</a>
                                 </div>
-                                <h2><a href="shop-product-right.html">{{p.nameProd}}</a></h2>
+                                <h2><a>{{p.nameProd}}</a></h2>
                                 <div class="product-rate-cover">
                                     <div class="product-rate d-inline-block">
                                         <div class="product-rating" style="width: 90%"></div>
@@ -359,7 +359,7 @@
 
                                     </div>
                                     <div class="add-cart">
-                                        <a class="add" href="shop-cart.html"><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                                        <a ><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                     </div>
                                 </div>
                             </div>
@@ -374,15 +374,15 @@
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-start" >
                             <li class="page-item">
-                                <a class="page-link" href="#"><i class="fi-rs-arrow-small-left"></i></a>
+                                <a class="page-link" ><i class="fi-rs-arrow-small-left"></i></a>
                             </li> 
-                             <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link dot" href="#">...</a></li>
-                            <li class="page-item"><a class="page-link" href="#">6</a></li>
+                             <li class="page-item"><a class="page-link" >1</a></li>
+                            <li class="page-item active"><a class="page-link" >2</a></li>
+                            <li class="page-item"><a class="page-link">3</a></li>
+                            <li class="page-item"><a class="page-link dot" >...</a></li>
+                            <li class="page-item"><a class="page-link" >6</a></li>
                             <li class="page-item"> -->
-                                <a class="page-link" href="#"><i class="fi-rs-arrow-small-right"></i></a>
+                                <a class="page-link" ><i class="fi-rs-arrow-small-right"></i></a>
                             </li>
                         </ul>
  
@@ -441,7 +441,7 @@
                 </div>
                 </ng-template>
                 <!-- fin category add  -->
-
+                <!-- list category -->
                 <a aria-label="Add Category" class="action-btn" (click)="open(mymodal3)"><i class="fi-rs-add"></i></a>
                 <h5 class="section-title style-1 mb-30" >Categories</h5>
             </div>
@@ -449,8 +449,56 @@
             <div style="overflow:auto;   width: 250px;  height: 570px;">
                 <ul *ngFor="let p of listPc">
                         <li>
-                            <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-1.svg" alt="">{{p.name_CategoryProd}}</a><a aria-label="Delete" class="action-btn" (click)="deletePc(p.idCategoryProd)"><i class="fi-rs-trash"></i></a><a aria-label="Edit" class="action-btn" (click)="open(mymodal4)"><i class="fi-rs-edit"></i></a>
+                            <a (click)="open(mymodal6)" > <img src="assets/imgs/theme/icons/category-1.svg" alt="">{{p.name_CategoryProd}}</a><a aria-label="Delete" class="action-btn" (click)="deletePc(p.idCategoryProd)"><i class="fi-rs-trash"></i></a><a aria-label="Edit" class="action-btn" (click)="open(mymodal4)"><i class="fi-rs-edit"></i></a>
                             <!-- edit category -->
+                            
+                            <!-- model of prod by cat -->
+                            <ng-template #mymodal6 let-modal6 id="#mymodal6" >
+                                <div class="row product-grid" >
+                                    <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
+                                        <!-- <button (click)="getProductByCategorie(p.idCategoryProd)">test</button> -->
+                                        <div class="product-cart-wrap mb-30">
+                                            <div class="product-img-action-wrap">
+                                                <div class="product-img product-img-zoom">
+                                                    <a >
+                                                        <img class="default-img" src="assets/imgs/shop/nectar.webp" alt="">
+                                                        <img class="hover-img" src="assets/imgs/shop/product-1-2.jpg" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="product-action-1">
+                                                    <a aria-label="Delete" class="action-btn" (click)="deleteProduct(p.idProd)"><i class="fi-rs-trash"></i></a>
+                                                    <a aria-label="Edit" class="action-btn" (click)="open(mymodal)"><i class="fi-rs-edit"></i></a>
+                                                    <a aria-label="Quick view" class="action-btn" (click)="open(mymodal2)" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                                </div>
+                </div>
+                                            <div class="product-content-wrap"  >
+                                                <div class="product-category">
+                                                    <a>{{products.productCategory}}</a>
+                                                </div>
+                                                <h2><a>{{products.nameProd}}</a></h2>
+                                                <div class="product-rate-cover">
+                                                    <div class="product-rate d-inline-block">
+                                                        <div class="product-rating" style="width: 90%"></div>
+                                                    </div>
+                                                    <span class="font-small ml-5 text-muted"> {{currentRate}}</span>
+                                                </div>
+                
+                                                <div class="product-card-bottom">
+                                                    <div class="product-price">
+                                                        <span>{{products.unit_price_htva}}Dt</span>
+                
+                                                    </div>
+                                                    <div class="add-cart">
+                                                        <a ><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+
+                            </ng-template>
+                            <!-- endmodel of prod by cat -->
                 <ng-template #mymodal4 let-modal4>
                     <div class="modal-header">
                         <h4 class="modal-title" id="modal-basic-title">Edit</h4>
@@ -499,8 +547,10 @@
     </div>
     <!-- recently added -->
     <section class="product-tabs section-padding position-relative">
-        <div class="section-title style-2">
-            <h3>Recently added</h3>
+        <div class="section-title style-2" >
+           
+            <h1>Recently added</h1>
+          
             
         </div>
         
@@ -510,24 +560,24 @@
             <div class="tab-pane fade show active" id="tab-one" role="tabpanel" aria-labelledby="tab-one">
                            
                     <div class="row product-grid-4" >
-                        <ng-container *ngIf='products.add_date >curDate '>
+                        <!-- <ng-container *ngIf='products.add_date >curDate '> -->
 
-                            <div class="col-lg-1-5 col-md-4 col-12 col-sm-6" *ngFor='let p of listProducts'>
-                      
-                       
+                            <div class="col-lg-1-5 col-md-4 col-12 col-sm-6" *ngFor='let p of listRecentProducts'>
+                               
+                                
 
                         <div class="product-cart-wrap mb-30" >
                             
                             <div class="product-img-action-wrap">
                                 <div class="product-img product-img-zoom">
-                                    <a href="shop-product-right.html">
+                                    <a>
                                         <img class="default-img" src="assets/imgs/shop/product-1-1.jpg" alt="">
                                         <img class="hover-img" src="assets/imgs/shop/product-1-2.jpg" alt="">
                                     </a>
                                 </div>
                                 <div class="product-action-1">
-                                    <a aria-label="Add To Wishlist" class="action-btn" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                    <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+                                    <a aria-label="Add To Wishlist" class="action-btn" ><i class="fi-rs-heart"></i></a>
+                                    <a aria-label="Compare" class="action-btn" ><i class="fi-rs-shuffle"></i></a>
                                     <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
                                 </div>
                                 <div class="product-badges product-badges-position product-badges-mrg">
@@ -536,9 +586,9 @@
                             </div>
                             <div class="product-content-wrap">
                                 <div class="product-category">
-                                    <a href="shop-grid-right.html">{{p.productCategory}}</a>
+                                    <a >{{p.productCategory}}</a>
                                 </div>
-                                <h2><a href="shop-product-right.html">{{p.nameProd}}</a></h2>
+                                <h2><a >{{p.nameProd}}</a></h2>
                                 <div class="product-rate-cover">
                                     <div class="product-rate d-inline-block">
                                         <div class="product-rating" style="width: 90%"></div>
@@ -552,7 +602,7 @@
                                         
                                     </div>
                                     <div class="add-cart">
-                                        <a class="add" href="shop-cart.html"><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                                        <a class="add" ><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                     </div>
                                 </div>
                             
@@ -560,7 +610,7 @@
                         </div>
                         </div>
                             </div>
-                        </ng-container>
+                        <!-- </ng-container> -->
                     </div>
             </div>
         </div>
