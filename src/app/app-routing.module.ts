@@ -8,6 +8,7 @@ import { HomeComponent } from './user/home/home.component';
 import { LoginComponent } from './user/pages/login/login.component';
 import { ForumComponent } from './user/pages/forum/forum.component';
 import { RegisterComponent } from './user/pages/register/register.component';
+import { LogoutComponent } from './user/pages/logout/logout.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
         component: LoginComponent
       },
       {
+        path: 'logout',
+        component: LogoutComponent
+      },
+      {
         path: 'forum',
         component: ForumComponent
       },
@@ -35,7 +40,7 @@ const routes: Routes = [
         path: 'register',
         component: RegisterComponent
       },
-      
+
     ]
   },
   {
@@ -50,7 +55,7 @@ const routes: Routes = [
         path: 'dashboard',
         component: DashboardComponent
       },
-      
+
     ]
   }
 ];

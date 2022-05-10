@@ -30,6 +30,7 @@ import { RegisterComponent } from './user/pages/register/register.component';
 import { ProfileComponent } from './user/pages/profile/profile.component';
 // import { AuthService } from './user/service/auth.service';
 import { BasicAuthHtppInterceptorService } from './user/_helpers/auth.interceptor';
+import { LogoutComponent } from './user/pages/logout/logout.component';
 
 
 
@@ -50,7 +51,8 @@ import { BasicAuthHtppInterceptorService } from './user/_helpers/auth.intercepto
     LoginComponent,
     ChatComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

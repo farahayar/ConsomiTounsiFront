@@ -1,16 +1,45 @@
-import { TestBed } from '@angular/core/testing';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
-import { AuthenticationService } from '../service/auth.service';
+export class User{
+  constructor(
+    public status:string,
+     ) {}
 
-describe('AuthService', () => {
-  let service: AuthenticationService;
+}
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(AuthenticationService);
-  });
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthenticationService {
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-});
+  constructor(
+    private httpClient:HttpClient
+  ) {
+     }
+
+     authenticate(username, password) {
+      const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
+      return this.httpClient.get<User>('http://localhost:8080/authenticate',{headers}).pipe(
+       map(
+         userData => {
+          sessionStorage.setItem('username',username);
+          return userData;
+         }
+       )
+
+      );
+    }
+
+
+  isUserLoggedIn() {
+    let user = sessionStorage.getItem('username')
+    console.log(!(user === null))
+    return !(user === null)
+  }
+
+  logOut() {
+    sessionStorage.removeItem('username')
+  }
+}
