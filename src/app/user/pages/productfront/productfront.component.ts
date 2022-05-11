@@ -125,11 +125,15 @@ addProduct(p: any, idCategoryProd:any) {
    
     this.form = false;
    // else
-    
-    
-
+   
   });
 
+}
+
+addBatch(products){
+  this.productService.addBatch(products).subscribe(() => {
+    this.getAllProducts();
+  });
 }
 
 editProduct(product: Products) {

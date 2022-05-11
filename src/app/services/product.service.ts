@@ -22,6 +22,9 @@ export class ProductService {
     addProduct(products: any, idCategoryProd){
         return this.httpClient.post(`${this.API_URL}/ajouterproduct/${idCategoryProd}`, products)
     }
+    addBatch(products){
+        return this.httpClient.post(`${this.API_URL}/add-batch`,products)
+    }
     editProduct(products: any){
         return this.httpClient.put(`${this.API_URL}/updateproduct`, products)
     }

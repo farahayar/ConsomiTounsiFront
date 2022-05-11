@@ -25,6 +25,7 @@
         <a href="#" class=".btn-default">Import</a> -->
         <!-- <a href="#" class="btn btn-primary btn-sm rounded">Create new</a> -->
         <button type="button"class="btn btn-light rounded font-md" (click)="open(mymodal1)">Create new</button>
+        <button type="button"class="btn btn-light rounded font-md" (click)="addBatch(products)">Import</button>
     </div>
     <!-- add product popo up -->
     <ng-template #mymodal1 let-modal1>
@@ -553,7 +554,7 @@
     <section class="product-tabs section-padding position-relative">
         <div class="section-title style-2" >
            
-            <h1>Recently added</h1>
+            <h1>Discover our new Products</h1>
           
             
         </div>
@@ -575,15 +576,16 @@
                             <div class="product-img-action-wrap">
                                 <div class="product-img product-img-zoom">
                                     <a>
-                                        <img class="default-img" src="assets/imgs/shop/product-1-1.jpg" alt="">
-                                        <img class="hover-img" src="assets/imgs/shop/product-1-2.jpg" alt="">
+                                        
+                                        <img class="default-img" src="assets/imgs/shop/nectar.webp" alt="">
+                                        
                                     </a>
                                 </div>
-                                <div class="product-action-1">
+                                <!-- <div class="product-action-1">
                                     <a aria-label="Add To Wishlist" class="action-btn" ><i class="fi-rs-heart"></i></a>
                                     <a aria-label="Compare" class="action-btn" ><i class="fi-rs-shuffle"></i></a>
                                     <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                </div>
+                                </div> -->
                                 <div class="product-badges product-badges-position product-badges-mrg">
                                     <span class="hot">New</span>
                                 </div>
