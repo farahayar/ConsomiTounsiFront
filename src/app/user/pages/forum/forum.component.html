@@ -129,12 +129,12 @@
                 <div class="sidebar pt-40px">
                     <div class="card card-item">
                         <div class="card-body">
-                            <h3 class="fs-17 pb-3">Most reacted</h3>
+                            <h3 class="fs-17 pb-3">Recently added</h3>
                             <div class="divider"><span></span></div>
-                            <div class="sidebar-questions pt-3">
+                            <div class="sidebar-questions pt-3" *ngFor='let r of recently'>
                                 <div class="media media-card media--card media--card-2">
                                     <div class="media-body">
-                                        <h5><a href="question-details.html">Using web3 to call precompile contract</a>
+                                        <h5><a href="question-details.html">{{r.title}}</a>
                                         </h5>
                                         <small class="meta">
                                             <span class="pr-1">2 mins ago</span>
@@ -143,28 +143,7 @@
                                         </small>
                                     </div>
                                 </div><!-- end media -->
-                                <div class="media media-card media--card media--card-2">
-                                    <div class="media-body">
-                                        <h5><a href="question-details.html">Is it true while finding Time Complexity of
-                                                the algorithm [closed]</a></h5>
-                                        <small class="meta">
-                                            <span class="pr-1">48 mins ago</span>
-                                            <span class="pr-1">. by</span>
-                                            <a href="#" class="author">wimax</a>
-                                        </small>
-                                    </div>
-                                </div><!-- end media -->
-                                <div class="media media-card media--card media--card-2">
-                                    <div class="media-body">
-                                        <h5><a href="question-details.html">image picker and store them into firebase
-                                                with flutter</a></h5>
-                                        <small class="meta">
-                                            <span class="pr-1">1 hour ago</span>
-                                            <span class="pr-1">. by</span>
-                                            <a href="#" class="author">Antonin gavrel</a>
-                                        </small>
-                                    </div>
-                                </div><!-- end media -->
+                                
                             </div><!-- end sidebar-questions -->
                         </div>
                     </div><!-- end card -->

@@ -11,11 +11,16 @@ export class ForumComponent implements OnInit {
   listProblems: any;
   searchInput: string = "";
   searchedElements: any;
+  recently:any;
 
   constructor(private fs: ForumService,private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getAllProducts();
+    this.fs.recently().subscribe((res)=>{
+      this.recently=res;
+    })
+    
   }
 
   getAllProducts(){

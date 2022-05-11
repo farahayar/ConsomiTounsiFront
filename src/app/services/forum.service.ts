@@ -16,6 +16,9 @@ export class ForumService {
   getAllProblems() {
     return this.httpClient.get(`${this.API_URL}/afficherProblems`)
   }
+  recently() {
+    return this.httpClient.get(`${this.API_URL}/recently`)
+  }
   getProblem(id: any) {
     return this.httpClient.get(`${this.API_URL}/afficherProblem/${id}`)
   }
