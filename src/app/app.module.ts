@@ -31,6 +31,7 @@ import { ProfileComponent } from './user/pages/profile/profile.component';
 // import { AuthService } from './user/service/auth.service';
 import { BasicAuthHtppInterceptorService } from './user/_helpers/auth.interceptor';
 import { LogoutComponent } from './user/pages/logout/logout.component';
+import { LoginguardService } from './user/service/loginguard.service';
 
 
 
@@ -77,8 +78,9 @@ import { LogoutComponent } from './user/pages/logout/logout.component';
   // providers: [AuthService],
   providers: [
     {
-    provide:HTTP_INTERCEPTORS, useClass:BasicAuthHtppInterceptorService, multi:true
-  }
+      provide:HTTP_INTERCEPTORS, useClass:BasicAuthHtppInterceptorService, multi:true
+    },
+    LoginguardService
   ],
   bootstrap: [AppComponent]
 })

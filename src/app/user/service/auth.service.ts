@@ -11,7 +11,7 @@ export class User {
 })
 export class AuthenticationService {
   constructor(private httpClient: HttpClient) {}
-// Provide username and password for authentication, and once authentication is successful, 
+// Provide username and password for authentication, and once authentication is successful,
 //store JWT token in session
   authenticate(username, password) {
     return this.httpClient

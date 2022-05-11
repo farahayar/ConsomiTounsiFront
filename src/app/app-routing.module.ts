@@ -9,6 +9,7 @@ import { LoginComponent } from './user/pages/login/login.component';
 import { ForumComponent } from './user/pages/forum/forum.component';
 import { RegisterComponent } from './user/pages/register/register.component';
 import { LogoutComponent } from './user/pages/logout/logout.component';
+import { LoginguardService } from './user/service/loginguard.service';
 
 const routes: Routes = [
   {
@@ -26,7 +27,8 @@ const routes: Routes = [
       },
       {
         path: 'login',
-        component: LoginComponent
+        component: LoginComponent,
+        canActivate:[LoginguardService]
       },
       {
         path: 'logout',

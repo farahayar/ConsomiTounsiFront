@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../../service/auth.service';
 @Component({
   selector: 'app-login',
@@ -8,21 +8,32 @@ import { AuthenticationService } from '../../service/auth.service';
 })
 export class LoginComponent implements OnInit {
   form: any = {
-    username:'abc',
-    password:'abc'
+    username:'Username',
+    password:'Password'
   };
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
-  constructor(private router: Router,
-    private loginservice: AuthenticationService) { }
+  returnUrl: string;
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private Authservice: AuthenticationService) { }
 
   ngOnInit() {
+
+            // reset login status
+            this.Authservice.logOut();
+
+            // get return url from route parameters or default to '/'
+            this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
   }
 
   checkLogin() {
-    (this.loginservice.authenticate(this.form.username,this.form.password).subscribe(
+    (this.Authservice.authenticate(this.form.username,this.form.password).subscribe(
       data => {
         this.router.navigate([''])
         this.isLoginFailed = false
