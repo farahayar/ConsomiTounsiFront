@@ -6,7 +6,7 @@
                 <div class="sidebar position-sticky top-0 pt-40px">
                     <ul class="generic-list-item generic-list-item-highlight fs-15">
                         <li class="lh-26 active"><a href="home-3.html"><i class="la la-globe mr-1 text-black"></i>
-                                Questions</a></li>
+                                Subjects</a></li>
                     </ul>
                 </div><!-- end sidebar -->
             </div><!-- end col-lg-2 -->
@@ -14,12 +14,18 @@
                 <div class="question-main-bar border-left border-left-gray pt-40px pb-40px">
                     <div class="filters pb-4 pl-3">
                         <div class="d-flex flex-wrap align-items-center justify-content-between pb-3">
-                            <h3 class="fs-22 fw-medium">All Questions</h3>
-                            <a href="" class="btn theme-btn theme-btn-sm" [routerLink]="['/home/addQuestion']">Ask Question</a>
+                            <h3 class="fs-22 fw-medium">Forum</h3>
+                            <form method="post" class="mr-4">
+                                <div class="form-group mb-0">
+                                    <input class="form-control form--control form--control-bg-gray" [(ngModel)]="searchInput" [ngModelOptions]="{standalone: true}" (ngModelChange)="onSearchChange()" type="text" name="search" placeholder="Type your search words...">
+                                    <button class="form-btn" type="button"><i class="la la-search"></i></button>
+                                </div>
+                            </form>
+                            <a href="" class="btn theme-btn theme-btn-sm" [routerLink]="['/home/addQuestion']">Add subject</a>
                         </div>
                         <div class="d-flex flex-wrap align-items-center justify-content-between">
-                            <p class="pt-1 fs-15 fw-medium lh-20">21,287 questions</p>
-                            <div class="filter-option-box w-20">
+                            <p class="pt-1 fs-15 fw-medium lh-20">{{listProblems.length}} subjects</p>
+                            <!-- <div class="filter-option-box w-20">
                                 <select class="custom-select">
                                     <option value="newest" selected="selected">Newest </option>
                                     <option value="featured">Bountied (390)</option>
@@ -28,7 +34,7 @@
                                     <option value="active">Active </option>
                                     <option value="unanswered">Unanswered </option>
                                 </select>
-                            </div><!-- end filter-option-box -->
+                            </div> -->
                         </div>
                     </div><!-- end filters -->
                     <div class="questions-snippet border-top border-top-gray" *ngFor='let p of listProblems'>
@@ -37,7 +43,7 @@
                             class="media media-card rounded-0 shadow-none mb-0 bg-transparent p-3 border-bottom border-bottom-gray">
                             <div class="votes text-center votes-2">
                                 <div class="vote-block">
-                                    <span class="vote-counts d-block text-center pr-0 lh-20 fw-medium">3</span>
+                                    <span class="vote-counts d-block text-center pr-0 lh-20 fw-medium">{{p.Approveds.length}}</span>
                                     <span class="vote-text d-block fs-13 lh-18">votes</span>
                                 </div>
                                 <div *ngIf="p.closed;then closed else open"></div>
@@ -55,13 +61,13 @@
 
 
                                 <div class="view-block">
-                                    <span class="view-counts d-block lh-20 fw-medium">12</span>
-                                    <span class="view-text d-block fs-13 lh-18">views</span>
+                                    <span class="view-counts d-block lh-20 fw-medium">{{p.comments.length}}</span>
+                                    <span class="view-text d-block fs-13 lh-18">Answers</span>
                                 </div>
                             </div>
                             <div class="media-body">
-                                <h5 class="mb-2 fw-medium"><a href="question-details.html">{{p.title| titlecase }}</a></h5>
-                                <p class="mb-2 truncate lh-20 fs-15">{{p.subject}}</p>
+                                <h5 class="mb-2 fw-medium"><a href="" [routerLink]="['/home/showQuestion', p.idProb]">{{p.title| titlecase }}</a></h5>
+                                <p class="mb-2 truncate lh-20 fs-15" innerHTML="{{p.subject }} " ></p>
                                 <div class="tags">
                                     <td *ngFor='let t of p.tags'><a href="#" class="tag-link">{{t.tag}}</a></td>
                                 </div>
@@ -83,8 +89,8 @@
                                             </div> -->
                                         </div>
                                         <small class="meta d-block text-right">
-                                            <span class="text-black d-block lh-18">asked</span>
-                                            <span class="d-block lh-18 fs-12">6 hours ago</span>
+                                            <span class="text-black d-block lh-18">Published</span>
+                                            <span class="d-block lh-18 fs-12">{{ p.date | date : "fullDate"}}</span>
                                         </small>
                                     </div>
                                 </div>
@@ -94,7 +100,7 @@
 
 
                     </div><!-- end questions-snippet -->
-                    <div class="pager pt-30px px-3">
+                    <!-- <div class="pager pt-30px px-3">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination generic-pagination pr-1">
                                 <li class="page-item">
@@ -116,14 +122,14 @@
                             </ul>
                         </nav>
                         <p class="fs-13 pt-2">Showing 1-10 results of 50,577 questions</p>
-                    </div>
+                    </div> -->
                 </div><!-- end question-main-bar -->
             </div><!-- end col-lg-7 -->
             <div class="col-lg-3">
                 <div class="sidebar pt-40px">
                     <div class="card card-item">
                         <div class="card-body">
-                            <h3 class="fs-17 pb-3">Related Questions</h3>
+                            <h3 class="fs-17 pb-3">Most reacted</h3>
                             <div class="divider"><span></span></div>
                             <div class="sidebar-questions pt-3">
                                 <div class="media media-card media--card media--card-2">
@@ -162,100 +168,7 @@
                             </div><!-- end sidebar-questions -->
                         </div>
                     </div><!-- end card -->
-                    <div class="card card-item">
-                        <div class="card-body">
-                            <h3 class="fs-17 pb-3">Related Tags</h3>
-                            <div class="divider"><span></span></div>
-                            <div class="tags pt-4">
-                                <div class="tag-item">
-                                    <a href="#" class="tag-link tag-link-md">analytics</a>
-                                    <span class="item-multiplier fs-13">
-                                        <span>×</span>
-                                        <span>32924</span>
-                                    </span>
-                                </div><!-- end tag-item -->
-                                <div class="tag-item">
-                                    <a href="#" class="tag-link tag-link-md">computer</a>
-                                    <span class="item-multiplier fs-13">
-                                        <span>×</span>
-                                        <span>32924</span>
-                                    </span>
-                                </div><!-- end tag-item -->
-                                <div class="tag-item">
-                                    <a href="#" class="tag-link tag-link-md">python</a>
-                                    <span class="item-multiplier fs-13">
-                                        <span>×</span>
-                                        <span>32924</span>
-                                    </span>
-                                </div><!-- end tag-item -->
-                                <div class="tag-item">
-                                    <a href="#" class="tag-link tag-link-md">javascript</a>
-                                    <span class="item-multiplier fs-13">
-                                        <span>×</span>
-                                        <span>32924</span>
-                                    </span>
-                                </div><!-- end tag-item -->
-                                <div class="tag-item">
-                                    <a href="#" class="tag-link tag-link-md">c#</a>
-                                    <span class="item-multiplier fs-13">
-                                        <span>×</span>
-                                        <span>32924</span>
-                                    </span>
-                                </div><!-- end tag-item -->
-                                <div class="collapse" id="showMoreTags">
-                                    <div class="tag-item">
-                                        <a href="#" class="tag-link tag-link-md">java</a>
-                                        <span class="item-multiplier fs-13">
-                                            <span>×</span>
-                                            <span>32924</span>
-                                        </span>
-                                    </div><!-- end tag-item -->
-                                    <div class="tag-item">
-                                        <a href="#" class="tag-link tag-link-md">swift</a>
-                                        <span class="item-multiplier fs-13">
-                                            <span>×</span>
-                                            <span>32924</span>
-                                        </span>
-                                    </div><!-- end tag-item -->
-                                    <div class="tag-item">
-                                        <a href="#" class="tag-link tag-link-md">html</a>
-                                        <span class="item-multiplier fs-13">
-                                            <span>×</span>
-                                            <span>32924</span>
-                                        </span>
-                                    </div><!-- end tag-item -->
-                                    <div class="tag-item">
-                                        <a href="#" class="tag-link tag-link-md">angular</a>
-                                        <span class="item-multiplier fs-13">
-                                            <span>×</span>
-                                            <span>32924</span>
-                                        </span>
-                                    </div><!-- end tag-item -->
-                                    <div class="tag-item">
-                                        <a href="#" class="tag-link tag-link-md">flutter</a>
-                                        <span class="item-multiplier fs-13">
-                                            <span>×</span>
-                                            <span>32924</span>
-                                        </span>
-                                    </div><!-- end tag-item -->
-                                    <div class="tag-item">
-                                        <a href="#" class="tag-link tag-link-md">machine-language</a>
-                                        <span class="item-multiplier fs-13">
-                                            <span>×</span>
-                                            <span>32924</span>
-                                        </span>
-                                    </div><!-- end tag-item -->
-                                </div><!-- end collapse -->
-                                <a class="collapse-btn fs-13" data-toggle="collapse" href="#showMoreTags" role="button"
-                                    aria-expanded="false" aria-controls="showMoreTags">
-                                    <span class="collapse-btn-hide">Show more<i
-                                            class="la la-angle-down ml-1 fs-11"></i></span>
-                                    <span class="collapse-btn-show">Show less<i
-                                            class="la la-angle-up ml-1 fs-11"></i></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div><!-- end card -->
+                  
                     <div class="ad-card">
                         <h4 class="text-gray text-uppercase fs-13 pb-3 text-center">Advertisements</h4>
                         <div class="ad-banner mb-4 mx-auto">

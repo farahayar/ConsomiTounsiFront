@@ -24,6 +24,15 @@ import { LoginComponent } from './user/pages/login/login.component';
 import { ChatBackComponent } from './admin/pages/chat-back/chat-back.component';
 import { AddQuestionComponent } from './user/pages/add-question/add-question.component';
 
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { ToastrModule } from 'ngx-toastr';
+import { HtmldecoderPipe } from './pipes/htmldecoder.pipe';
+import { NgxTagsInputModule } from 'ngx-tags-input';
+import { NgxTypeaheadModule } from "ngx-typeahead";
+
+import { ShowQuestionComponent } from './user/pages/show-question/show-question.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +51,10 @@ import { AddQuestionComponent } from './user/pages/add-question/add-question.com
     ChatComponent,
     LoginComponent,
     ChatBackComponent,
-    AddQuestionComponent
+    AddQuestionComponent,
+    HtmldecoderPipe,
+    ShowQuestionComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -51,12 +63,15 @@ import { AddQuestionComponent } from './user/pages/add-question/add-question.com
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    NgbModule
-    // ToastrModule.forRoot({
-    //   timeOut: 1000,
-    //   positionClass: 'toast-bottom-right',
-    //   preventDuplicates: true,
-    // })
+    NgbModule,
+    AngularEditorModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }),
+    NgxTypeaheadModule,
+    NgxTagsInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
