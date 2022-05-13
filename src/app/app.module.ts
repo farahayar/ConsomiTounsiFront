@@ -35,6 +35,22 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
+//import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ChatComponent } from './user/pages/chat/chat.component';
+import { LoginComponent } from './user/pages/login/login.component';
+import { ChatBackComponent } from './admin/pages/chat-back/chat-back.component';
+import { AddQuestionComponent } from './user/pages/add-question/add-question.component';
+
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { ToastrModule } from 'ngx-toastr';
+import { HtmldecoderPipe } from './pipes/htmldecoder.pipe';
+import { NgxTagsInputModule } from 'ngx-tags-input';
+import { NgxTypeaheadModule } from "ngx-typeahead";
+
+import { ShowQuestionComponent } from './user/pages/show-question/show-question.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -60,6 +76,13 @@ import { NgxPaginationModule } from 'ngx-pagination';
     
     
     
+    ChatComponent,
+    LoginComponent,
+    ChatBackComponent,
+    AddQuestionComponent,
+    HtmldecoderPipe,
+    ShowQuestionComponent,
+    PageNotFoundComponent
   ],
   imports: [
     
@@ -73,14 +96,23 @@ import { NgxPaginationModule } from 'ngx-pagination';
       debug: true
     }),
     ShareIconsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
     //BrowserAnimationsModule,
    // ToastrModule.forRoot(),
     
    
     
-    
-   
+    BrowserAnimationsModule,
+    HttpClientModule,
+    NgbModule,
+    AngularEditorModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }),
+    NgxTypeaheadModule,
+    NgxTagsInputModule
   ],
    exports: [
      FooterBComponent,

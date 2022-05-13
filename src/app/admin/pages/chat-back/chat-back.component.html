@@ -1,0 +1,43 @@
+<app-sidebar></app-sidebar>
+<app-nav-bar-b></app-nav-bar-b>
+<main class="main-wrap">
+	<div id="container">
+		<aside>
+			<header>
+				<input type="text" [(ngModel)]="searchInput" [ngModelOptions]="{standalone: true}" (ngModelChange)="onSearchChange()" placeholder="search">
+			</header>
+			<ul>
+				<li *ngFor="let item of listSender" (click)="initCurrentChat(item)">
+					<div style="width:100%">
+						<h2 style="text-align: center;"> <span class="newMsg " *ngIf="item?.new">{{item?.new}}</span>
+							{{item?.sender?.fname}} </h2>
+					</div>
+				</li>
+			</ul>
+		</aside>
+		<main *ngIf="listSender.length">
+			<header>
+				<div>
+					<h2>Chat With : {{currentChat?.user?.fname}}</h2>
+				</div>
+			</header>
+			<ul id="chat" *ngIf="currentChat.messages">
+				<li *ngFor="let item of currentChat.messages"
+					[ngClass]="[item.sender.userid === userId ? 'me' : 'you']">
+					<div class="entete">
+						<h3>{{item.date | date:'dd-mm-yyy'}}</h3>
+					</div>
+					<div class="message">
+						{{item.message}}
+					</div>
+				</li>
+			</ul>
+			<footer>
+				<textarea [(ngModel)]="messageInput" [ngModelOptions]="{standalone: true}"
+					placeholder="Type your message"></textarea>
+				<button type="button" (click)="onSend()" class="btn btn-xs">Send</button>
+			</footer>
+		</main>
+	</div>
+</main>
+<app-footer-b></app-footer-b>

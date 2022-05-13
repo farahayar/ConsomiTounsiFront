@@ -1,0 +1,34 @@
+
+<div id="body"> 
+  
+  <div id="chat-circle" class="btn btn-raised">
+          <div id="chat-overlay"></div>
+          <img src="/assets/chat-4-xxl.png" width="36" height="36"/>
+      </div>
+    
+    <div class="chat-box">
+      <div class="chat-box-header">
+        ChatAdmin
+        <span class="chat-box-toggle"><button type="button" class="btn-close" aria-label="Close"></button>
+        </span>
+      </div>
+      <div class="chat-box-body">
+        <div class="chat-box-overlay">   
+        </div>
+        <div class="chat-logs">
+          <div *ngFor="let item of messages" class="chat-msg " [ngClass]="[item.sender.userid === userId ? 'self' : 'user']">
+              <div class="cm-msg-text" [title]="item.date | date:'dd-mm-yyyy hh:mm'" >
+                  {{item.message}}
+              </div>
+          </div>
+        </div><!--chat-log -->
+      </div>
+      <div class="chat-input">      
+        <form>
+          <input type="text"  id="chat-input" [(ngModel)]="messageInput" [ngModelOptions]="{standalone: true}" placeholder="Send a message..."/>
+        <button (click)="onSend()" class="chat-submit" id="chat-submit"><img src="/assets/send.svg"/></button>
+        </form>      
+      </div>
+    </div>
+  
+  </div>

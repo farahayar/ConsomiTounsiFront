@@ -1,0 +1,159 @@
+<!-- <app-nav-bar></app-nav-bar> -->
+<section class="question-area pt-40px pb-40px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10">
+                <div class="question-main-bar mb-50px">
+                    <div class="question-highlight">
+                        <div class="media media-card shadow-none rounded-0 mb-0 bg-transparent p-0">
+                            <div class="media-body">
+                                <h5 class="fs-20"><a href="">{{problem.title| titlecase}}</a></h5>
+                                <div class="meta d-flex flex-wrap align-items-center fs-13 lh-20 py-1">
+                                    <div class="pr-3">
+                                        <span>Published</span>
+                                        <span class="text-black">{{ problem.date | date : "fullDate"}}</span>
+                                    </div>
+
+                                </div>
+                                <div class="tags">
+                                    <td *ngFor='let t of problem.tags'><a href="#" class="tag-link">{{t.tag}}</a></td>
+                                </div>
+                            </div>
+                        </div><!-- end media -->
+                    </div><!-- end question-highlight -->
+                    <div class="question d-flex">
+                        <div class="votes votes-styled w-auto">
+                            <div id="vote" class="upvotejs">
+                                <a *ngIf="upSubject" (click)="unApprove()" class="upvote upvote-on" data-toggle="tooltip"
+                                    data-placement="right" title="This subject is useful"></a>
+                                <a *ngIf="!upSubject" (click)="upApprovSubject()" class="upvote" data-toggle="tooltip" data-placement="right"
+                                    title="This subject is useful"></a>
+                                <span>{{votes}}</span>
+                                <a *ngIf="!downSubject" class="downvote" data-toggle="tooltip" data-placement="right"
+                                    title="This subject is not useful"></a>
+                                <a *ngIf="downSubject" class="downvote downvote-on" data-toggle="tooltip"
+                                    data-placement="right" title="This subject is not useful"></a>
+                                <a *ngIf="canClose && !closed" (click)="closeSubject()" class="star"
+                                    data-placement="right" title="Close the subject"></a>
+                                <a *ngIf="closed" class="star star-on" title="Close the subject"></a>
+                            </div>
+                        </div><!-- end votes -->
+                        <div class="question-post-body-wrap flex-grow-1">
+                            <div class="question-post-body">
+
+                                <pre class="code-block custom-scrollbar-styled">
+                                    <code  innerHTML="{{problem.subject }} " >
+
+                                    </code>
+                                </pre>
+                            </div><!-- end question-post-body -->
+                            <div class="question-post-user-action">
+                                <div class="post-menu">
+                                    <div class="btn-group">
+                                        <!-- <button class="btn dropdown-toggle after-none" type="button"
+                                            id="shareDropdownMenu" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">Share</button>
+                                         -->
+                                    </div><!-- btn-group -->
+
+                                </div><!-- end post-menu -->
+
+
+                            </div><!-- end question-post-user-action -->
+
+                        </div><!-- end question-post-body-wrap -->
+                    </div><!-- end question -->
+                    <div class="subheader d-flex align-items-center justify-content-between">
+                        <div class="subheader-title">
+                            <h3 class="fs-16">{{problem.comments.length}} Answer</h3>
+                        </div><!-- end subheader-title -->
+                        <!-- <div class="subheader-actions d-flex align-items-center lh-1">
+                            <label class="fs-13 fw-regular mr-1 mb-0">Order by</label>
+                            <div class="w-100px">
+                                <select class="select-container">
+                                    <option value="active">active</option>
+                                    <option value="oldest">oldest</option>
+                                    <option value="votes" selected="selected">votes</option>
+                                </select>
+                            </div>
+                        </div> -->
+                        <!-- end subheader-actions -->
+                    </div><!-- end subheader -->
+                    <div class="answer-wrap d-flex" *ngFor='let c of listComments'>
+                        <div class="votes votes-styled w-auto">
+                            <div id="vote2" class="upvotejs">
+                                <a class="upvote upvote-on" (click)="addApproveComment(c.id)" data-toggle="tooltip" data-placement="right"
+                                    title="This subject is useful"></a>
+                                <span class="count">{{c.approved}}</span>
+                                <a *ngIf="c.approved >50" class="star check star-on" data-toggle="tooltip"
+                                    data-placement="right" title="The subject owner accepted this answer"></a>
+                            </div>
+                        </div><!-- end votes -->
+                        <div class="answer-body-wrap flex-grow-1">
+                            <div class="answer-body">
+
+                                <pre class="code-block custom-scrollbar-styled">
+                                    <code>{{c.comment}}</code></pre>
+
+                            </div><!-- end answer-body -->
+                            <!-- <div class="question-post-user-action">
+                                
+                                <div class="media media-card user-media align-items-center">
+                                   
+                                    <div class="media-body d-flex align-items-center justify-content-between">
+                                        <div>
+                                            <h5 class="pb-1"><a href="">{{c.user.fname| titlecase }} {{c.user.lname| titlecase }}</a></h5>
+                                        
+                                        </div>
+                                     
+                                    </div>
+                                </div>
+                             
+                            </div> -->
+                            <!-- end question-post-user-action -->
+
+                        </div><!-- end answer-body-wrap -->
+                    </div><!-- end answer-wrap -->
+                    <div *ngIf="closed;then cantAnswer else canAnswer"></div>
+                    <ng-template #cantAnswer>
+                        <div class="alert alert-warning">This matter is closed</div>
+                    </ng-template>
+                    <ng-template #canAnswer>
+                        <div class="subheader">
+                            <div class="subheader-title">
+                                <h3 class="fs-16">Your Answer</h3>
+                            </div><!-- end subheader-title -->
+                        </div><!-- end subheader -->
+                        <div class="post-form">
+                            <form [formGroup]="addComment" class="pt-3">
+                                <div class="input-box">
+                                    <label class="fs-14 text-black lh-20 fw-medium">Body</label>
+                                    <div class="form-group">
+                                        <textarea
+                                            class="form-control form--control form-control-sm fs-13 user-text-editor"
+                                            name="message" rows="6" placeholder="Your answer here..."
+                                            formControlName="comment">Your answer here...</textarea>
+                                        <div class="alert alert-danger" *ngIf="comment.touched && comment.invalid">
+                                            <div *ngIf=comment.errors.minlength> Minlength 2!</div>
+                                            <div *ngIf=comment.errors.required> This filed is required!</div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button class="btn theme-btn theme-btn-sm" type="button" [disabled]="addComment.invalid"
+                                    (click)="commentSubject()">Post Your Answer</button>
+                            </form>
+                        </div>
+                    </ng-template>
+
+                </div><!-- end question-main-bar -->
+            </div><!-- end col-lg-9 -->
+
+        </div><!-- end row -->
+    </div><!-- end container -->
+</section><!-- end question-area -->
+<!-- ================================
+         END QUESTION AREA
+================================= -->
