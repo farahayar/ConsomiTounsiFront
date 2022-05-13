@@ -21,7 +21,6 @@ import { RouterOutlet } from '@angular/router'
 import { FormulaireProductComponent } from './pages/formulaire-product/formulaire-product.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ProductCategoryComponent } from './pages/product-category/product-category.component';
-import { AdsComponent } from './pages/ads/ads.component';
 import { AdsfrontComponent } from './user/pages/adsfront/adsfront.component';
 import { ProductfrontComponent } from './user/pages/productfront/productfront.component';
 import { DatePipe } from '@angular/common';
@@ -55,7 +54,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ProductsComponent,
     FormulaireProductComponent,
     ProductCategoryComponent,
-    AdsComponent,
     AdsfrontComponent,
     ProductfrontComponent,
     

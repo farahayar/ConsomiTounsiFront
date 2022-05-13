@@ -4,7 +4,6 @@ import { DashboardComponent } from './admin/pages/dashboard/dashboard.component'
 import { SignInComponent } from './admin/sign-in/sign-in.component';
 import { BackOfficeComponent } from './layouts/back-office/back-office.component';
 import { FrontOfficeComponent } from './layouts/front-office/front-office.component';
-import { AdsComponent } from './pages/ads/ads.component';
 import { ProductCategoryComponent } from './pages/product-category/product-category.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { HomeComponent } from './user/home/home.component';
@@ -60,10 +59,7 @@ const routes: Routes = [
         path: 'pc',
         component: ProductCategoryComponent
       },
-      {
-        path: 'ads',
-        component: AdsComponent
-      },
+     
       
       
     ]
