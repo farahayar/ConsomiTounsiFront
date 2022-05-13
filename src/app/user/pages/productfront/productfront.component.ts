@@ -37,6 +37,8 @@ export class ProductfrontComponent implements OnInit {
  title = 'toaster-not';
   name = 'ngx sharebuttons';
   currentRate = 6;
+  listSizep;
+  
   
   
 
@@ -84,7 +86,7 @@ getAllProducts() {
     this.a = res;
     
 
-   // this.listSize = (Array)(this.listProducts).length
+   this.listSizep = (Array)(this.listProducts).length
     
   }
   )
@@ -169,7 +171,7 @@ getAllPc() {
 addPc(prc: any) {
   this.pc.addPc(prc).subscribe(()=> {
     this.getAllPc();//après ajout bch yaffichi liste des produits
-    this.ngOnInit();
+    //this.ngOnInit();
     this.form = false;
   });
 
