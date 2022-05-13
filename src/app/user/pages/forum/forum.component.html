@@ -137,9 +137,8 @@
                                         <h5><a href="question-details.html">{{r.title}}</a>
                                         </h5>
                                         <small class="meta">
-                                            <span class="pr-1">2 mins ago</span>
-                                            <span class="pr-1">. by</span>
-                                            <a href="#" class="author">Sudhir Kumbhare</a>
+                                            <span class="pr-1">{{ r.date | date : "fullDate"}}</span>
+                                            <span class="pr-1">. by {{c.user.fname| titlecase }} {{c.user.lname| titlecase }}</span>
                                         </small>
                                     </div>
                                 </div><!-- end media -->
