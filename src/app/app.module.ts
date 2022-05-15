@@ -64,10 +64,7 @@ import { LoginguardService } from './user/service/loginguard.service';
     HttpClientModule,
     NgbModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule,
-    AngularFirestoreModule,
-    AngularFireStorageModule,
-    AngularFireDatabaseModule,
+    AngularFireAuthModule
 
     // ToastrModule.forRoot({
     //   timeOut: 1000,

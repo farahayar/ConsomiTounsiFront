@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { map } from "rxjs/operators";
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 export class User {
   constructor(public status: string) {}
@@ -10,7 +11,8 @@ export class User {
   providedIn: "root"
 })
 export class AuthenticationService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient) {}
 // Provide username and password for authentication, and once authentication is successful,
 //store JWT token in session
   authenticate(username, password) {

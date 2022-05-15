@@ -79,11 +79,11 @@
                                               Login failed: {{ errorMessage }}
                                             </div>
                                           </div>
-                                        <!-- <div class="formGroup">
-                                            <button type="button" (click)="authService.FacebookAuth()">
-                                              Log in with Facebook
+                                          <div class="formGroup">
+                                            <button type="button" (click)="authService.GoogleAuth()">
+                                              Log in with Google
                                             </button>
-                                        </div> -->
+                                          </div>
                                     </form>
                                     <div class="alert alert-success" *ngIf="isLoggedIn">
                                         Logged in as {{ roles }}.
