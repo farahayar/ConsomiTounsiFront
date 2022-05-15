@@ -14,11 +14,30 @@ import { DashboardComponent } from './admin/pages/dashboard/dashboard.component'
 import { SidebarComponent } from './admin/layouts/sidebar/sidebar.component';
 import { NavBarBComponent } from './admin/layouts/nav-bar-b/nav-bar-b.component';
 import { FooterBComponent } from './admin/layouts/footer-b/footer-b.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProductsComponent } from './pages/products/products.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterOutlet } from '@angular/router'
+import { FormulaireProductComponent } from './pages/formulaire-product/formulaire-product.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ProductCategoryComponent } from './pages/product-category/product-category.component';
+import { AdsfrontComponent } from './user/pages/adsfront/adsfront.component';
+import { ProductfrontComponent } from './user/pages/productfront/productfront.component';
+import { DatePipe } from '@angular/common';
+//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//import { ToastrModule } from 'ngx-toastr';
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import { ShareIconsModule } from 'ngx-sharebuttons/icons';
+import { NgxPaginationModule } from 'ngx-pagination';
+
+
+
+
+
+
 //import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { ChatComponent } from './user/pages/chat/chat.component';
 import { LoginComponent } from './user/pages/login/login.component';
 import { ChatBackComponent } from './admin/pages/chat-back/chat-back.component';
@@ -48,6 +67,15 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     SidebarComponent,
     NavBarBComponent,
     FooterBComponent,
+    ProductsComponent,
+    FormulaireProductComponent,
+    ProductCategoryComponent,
+    AdsfrontComponent,
+    ProductfrontComponent,
+    
+    
+    
+    
     ChatComponent,
     LoginComponent,
     ChatBackComponent,
@@ -57,10 +85,23 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     PageNotFoundComponent
   ],
   imports: [
+    
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
+    NgbModule,
     ReactiveFormsModule,
+    ShareButtonsModule.withConfig({
+      debug: true
+    }),
+    ShareIconsModule,
+    NgxPaginationModule,
+    //BrowserAnimationsModule,
+   // ToastrModule.forRoot(),
+    
+   
+    
     BrowserAnimationsModule,
     HttpClientModule,
     NgbModule,
@@ -73,7 +114,20 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     NgxTypeaheadModule,
     NgxTagsInputModule
   ],
-  providers: [],
+   exports: [
+     FooterBComponent,
+     NavBarBComponent,
+     SidebarComponent,
+     NavBarBComponent,
+    FooterBComponent,
+    DashboardComponent,
+    RouterOutlet,
+    BackOfficeComponent,
+    FrontOfficeComponent,
+   
+   
+ ],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
